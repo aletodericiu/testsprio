@@ -78,7 +78,7 @@ public class Algorithm {
             }
         }
         int j=0;
-        while (j<firstHalfFromFirstIndiv.length){
+        while (i<genes1.length){
             newSol.setGene(i,firstHalfFromFirstIndiv[j]);
             j++;
             i++;

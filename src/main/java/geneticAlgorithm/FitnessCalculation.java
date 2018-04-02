@@ -75,10 +75,11 @@ public class FitnessCalculation {
 
     // Get optimum fitness
     public static double getMaxFitness() {
-        Individual individual=new Individual();
-        individual.setGenes(genes);
-        individual.setNrTests(nrTests);
-        return calculteAPFD(individual);
+//        Individual individual=new Individual();
+//        individual.setGenes(genes);
+//        individual.setNrTests(nrTests);
+//        return calculteAPFD(individual);
+        return 1;
     }
 
 

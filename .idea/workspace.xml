@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2dd11000-1a35-4434-b6c1-4a2459b41f0c" name="Default" comment="" />
+    <list default="true" id="2dd11000-1a35-4434-b6c1-4a2459b41f0c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/Application.java" afterPath="$PROJECT_DIR$/src/main/java/application/Application.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java" afterPath="$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java" afterPath="$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/application/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="38" column="78" lean-forward="false" selection-start-line="38" selection-start-column="78" selection-end-line="38" selection-end-column="78" />
+            <state relative-caret-position="231">
+              <caret line="29" column="48" lean-forward="false" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,8 +88,8 @@
       <file leaf-file-name="Individual.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Individual.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="57" selection-end-column="5" />
+            <state relative-caret-position="181">
+              <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
               <folding>
                 <element signature="e#168#169#0" expanded="true" />
                 <element signature="e#213#214#0" expanded="true" />
@@ -108,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Algorithm.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Algorithm.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-945">
-              <caret line="81" column="53" lean-forward="true" selection-start-line="81" selection-start-column="53" selection-end-line="81" selection-end-column="53" />
+            <state relative-caret-position="336">
+              <caret line="80" column="23" lean-forward="false" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
               <folding>
                 <element signature="e#415#416#0" expanded="true" />
                 <element signature="e#466#467#0" expanded="true" />
@@ -124,8 +128,8 @@
       <file leaf-file-name="FitnessCalculation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1116">
-              <caret line="70" column="9" lean-forward="false" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
+            <state relative-caret-position="378">
+              <caret line="81" column="16" lean-forward="false" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
               <folding>
                 <element signature="e#302#303#0" expanded="true" />
                 <element signature="e#362#363#0" expanded="true" />
@@ -180,6 +184,9 @@
       <find>si</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GradleLocalSettings">
     <option name="modificationStamps">
       <map>
@@ -202,10 +209,10 @@
         <option value="$PROJECT_DIR$/src/main/java/utils/UsefulMethod.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/UsefulMethods.java" />
         <option value="$PROJECT_DIR$/src/main/java/geneticAlgorithm/Population.java" />
-        <option value="$PROJECT_DIR$/src/main/java/application/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/geneticAlgorithm/Individual.java" />
-        <option value="$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java" />
         <option value="$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/application/Application.java" />
       </list>
     </option>
   </component>
@@ -220,6 +227,7 @@
     <option name="width" value="1924" />
     <option name="height" value="1038" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -453,12 +461,12 @@
       <workItem from="1522507043321" duration="350000" />
       <workItem from="1522507596086" duration="5673000" />
       <workItem from="1522527668572" duration="14210000" />
-      <workItem from="1522607923742" duration="19209000" />
+      <workItem from="1522607923742" duration="20462000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40078000" />
+    <option name="totallyTimeSpent" value="41331000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1924" height="1038" extended-state="0" />
@@ -470,23 +478,23 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32963374" sideWeight="0.5650577" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32963374" sideWeight="0.5671564" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32963374" sideWeight="0.43494228" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32963374" sideWeight="0.43284366" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948583" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973767" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.49370408" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.49160546" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven-2 Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39955604" sideWeight="0.44543546" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39955604" sideWeight="0.44333684" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -523,93 +531,115 @@
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java</url>
-          <line>72</line>
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>69</line>
           <properties />
-          <option name="timeStamp" value="67" />
+          <option name="timeStamp" value="133" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="134" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
           <line>71</line>
           <properties />
-          <option name="timeStamp" value="71" />
+          <option name="timeStamp" value="135" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Population.java</url>
-          <line>40</line>
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>73</line>
           <properties />
-          <option name="timeStamp" value="72" />
+          <option name="timeStamp" value="136" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Population.java</url>
-          <line>39</line>
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>74</line>
           <properties />
-          <option name="timeStamp" value="73" />
+          <option name="timeStamp" value="137" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Population.java</url>
-          <line>41</line>
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>76</line>
           <properties />
-          <option name="timeStamp" value="74" />
+          <option name="timeStamp" value="138" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java</url>
-          <line>77</line>
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>75</line>
           <properties />
-          <option name="timeStamp" value="77" />
+          <option name="timeStamp" value="139" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java</url>
-          <line>78</line>
-          <properties />
-          <option name="timeStamp" value="78" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java</url>
-          <line>79</line>
-          <properties />
-          <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
           <line>80</line>
           <properties />
-          <option name="timeStamp" value="80" />
+          <option name="timeStamp" value="140" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java</url>
-          <line>50</line>
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>79</line>
           <properties />
-          <option name="timeStamp" value="101" />
+          <option name="timeStamp" value="141" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java</url>
-          <line>51</line>
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>82</line>
           <properties />
-          <option name="timeStamp" value="102" />
+          <option name="timeStamp" value="142" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java</url>
-          <line>52</line>
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>81</line>
           <properties />
-          <option name="timeStamp" value="103" />
+          <option name="timeStamp" value="143" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java</url>
-          <line>53</line>
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>83</line>
           <properties />
-          <option name="timeStamp" value="104" />
+          <option name="timeStamp" value="144" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java</url>
-          <line>76</line>
-          <properties class="geneticAlgorithm.FitnessCalculation" method="getMaxFitness">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="76" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>85</line>
+          <properties />
+          <option name="timeStamp" value="145" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>84</line>
+          <properties />
+          <option name="timeStamp" value="146" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>64</line>
+          <properties />
+          <option name="timeStamp" value="147" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>65</line>
+          <properties />
+          <option name="timeStamp" value="150" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>66</line>
+          <properties />
+          <option name="timeStamp" value="151" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java</url>
+          <line>67</line>
+          <properties />
+          <option name="timeStamp" value="152" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="133" />
+      <option name="time" value="153" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -934,39 +964,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/application/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="38" column="78" lean-forward="false" selection-start-line="38" selection-start-column="78" selection-end-line="38" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/domain/FaultMatrix.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding>
             <element signature="e#2132#2133#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Population.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding>
-            <element signature="e#156#157#0" expanded="true" />
-            <element signature="e#200#201#0" expanded="true" />
-            <element signature="e#943#944#0" expanded="true" />
-            <element signature="e#984#985#0" expanded="true" />
-            <element signature="e#1410#1411#0" expanded="true" />
-            <element signature="e#1451#1452#0" expanded="true" />
-            <element signature="e#1537#1538#0" expanded="true" />
-            <element signature="e#1579#1580#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -989,21 +992,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Population.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1116">
-          <caret line="70" column="9" lean-forward="false" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
+        <state relative-caret-position="165">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
-            <element signature="e#302#303#0" expanded="true" />
-            <element signature="e#362#363#0" expanded="true" />
+            <element signature="e#156#157#0" expanded="true" />
+            <element signature="e#200#201#0" expanded="true" />
+            <element signature="e#943#944#0" expanded="true" />
+            <element signature="e#984#985#0" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
+            <element signature="e#1451#1452#0" expanded="true" />
+            <element signature="e#1537#1538#0" expanded="true" />
+            <element signature="e#1579#1580#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Individual.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="57" selection-end-column="5" />
+        <state relative-caret-position="181">
+          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
           <folding>
             <element signature="e#168#169#0" expanded="true" />
             <element signature="e#213#214#0" expanded="true" />
@@ -1027,11 +1036,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/Algorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-945">
-          <caret line="81" column="53" lean-forward="true" selection-start-line="81" selection-start-column="53" selection-end-line="81" selection-end-column="53" />
+        <state relative-caret-position="336">
+          <caret line="80" column="23" lean-forward="false" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
           <folding>
             <element signature="e#415#416#0" expanded="true" />
             <element signature="e#466#467#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/geneticAlgorithm/FitnessCalculation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="81" column="16" lean-forward="false" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
+          <folding>
+            <element signature="e#302#303#0" expanded="true" />
+            <element signature="e#362#363#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/application/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="29" column="48" lean-forward="false" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
