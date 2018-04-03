@@ -24,10 +24,10 @@ public class Application {
 
         // Create an initial population
         //Population myPop = new Population(UsefulMethods.factorial(faultMatrix.getNumberOfTests()), true,faultMatrix.getNumberOfTests());
-        Population myPop = new Population(1000, true,faultMatrix.getNumberOfTests());
+        Population myPop = new Population(50, true,faultMatrix.getNumberOfTests());
         // Evolve our population until we reach an optimum solution
         int generationCount = 0;
-        while (myPop.getFittest().getFitness() < FitnessCalculation.getMaxFitness()) {
+        while (myPop.getFittest().getFitness() >= FitnessCalculation.getMaxFitness()) {
             generationCount++;
             System.out.println("Generation: " + generationCount + " Fittest: " + myPop.getFittest().getFitness());
             myPop = Algorithm.evolvePopulation(myPop);

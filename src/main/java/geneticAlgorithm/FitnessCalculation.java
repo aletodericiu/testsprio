@@ -23,7 +23,7 @@ public class FitnessCalculation {
             notFound=false;
             while ((!notFound)&&(cursor<data.length)) {
                 if (faultMatrix.getElementFromIndexes(data[cursor], i) == 1) {
-                    vect[i]=data[cursor]+1;
+                    vect[i]=cursor+1;
                     notFound=true;
                     cursor=0;
                 }else{
@@ -41,11 +41,11 @@ public class FitnessCalculation {
 
     // Get optimum fitness
     public static double getMaxFitness() {
-//        Individual individual=new Individual();
-//        individual.setGenes(genes);
-//        individual.setNrTests(nrTests);
-//        return calculteAPFD(individual);
-        return 1;
+        Individual individual=new Individual();
+        individual.setGenes(genes);
+        individual.setNrTests(nrTests);
+        return calculteAPFD(individual);
+//        return 1;
     }
 
 
