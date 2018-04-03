@@ -4,8 +4,6 @@ import domain.FaultMatrix;
 
 public class Algorithm {
     /* GA parameters */
-    private static final double uniformRate = 0.5;
-    private static final double mutationRate = 0.015;
     private static final int tournamentSize = 5;
     private static final boolean elitism = true;
     private static FaultMatrix faultMatrix;
@@ -52,23 +50,13 @@ public class Algorithm {
     // Crossover individuals
     private static Individual crossover(Individual indiv1, Individual indiv2) {
         Individual newSol = new Individual(faultMatrix.getNumberOfTests());
-//        // Loop through genes
-//        for (int i = 0; i < indiv1.size(); i++) {
-//            // Crossover
-//            if (Math.random() <= uniformRate) {
-//                newSol.setGene(i, indiv1.getGene(i));
-//            } else {
-//                newSol.setGene(i, indiv2.getGene(i));
-//            }
-//        }
-//        return newSol;
         int[] genes1=indiv1.getGenes();
         int[] genes2=indiv2.getGenes();
         int i=0;
         int[] firstHalfFromFirstIndiv=new int[genes1.length/2];
         int contor=0;
         while (contor<genes2.length){
-            if (isGenerated(firstHalfFromFirstIndiv,genes2[contor],i)){
+            if (isGenerated(firstHalfFromFirstIndiv,genes2[contor])){
                 contor++;
             }
             else{
@@ -86,11 +74,11 @@ public class Algorithm {
         return newSol;
     }
 
-    private static Boolean isGenerated(int[] data, int x,int poz){
+    private static Boolean isGenerated(int[] data, int x){
         int nrZ=0;
         int i=0;
         int j=0;
-        while (i<poz){
+        while (i<data.length){
             if (x==data[i]){return true;}
             i++;
         }
@@ -99,14 +87,6 @@ public class Algorithm {
 
     // Mutate an individual
     private static void mutate(Individual indiv) {
-        // Loop through genes
-//        for (int i = 0; i < indiv.size(); i++) {
-//            if (Math.random() <= mutationRate) {
-//                // Create random gene
-//                int gene = (int)(Math.random() * ((indiv.getNrTests()-1) + 1));
-//                indiv.setGene(i, gene);
-//            }
-//        }
         Boolean swapped=false;
         int position1 = (int)(Math.random() * ((faultMatrix.getNumberOfTests()-1) + 1));
         int position2 = (int)(Math.random() * ((faultMatrix.getNumberOfTests()-1) + 1));
