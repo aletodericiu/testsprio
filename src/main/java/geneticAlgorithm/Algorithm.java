@@ -68,7 +68,7 @@ public class Algorithm {
         int[] firstHalfFromFirstIndiv=new int[genes1.length/2];
         int contor=0;
         while (contor<genes2.length){
-            if (isGenerated(firstHalfFromFirstIndiv,genes2[contor])){
+            if (isGenerated(firstHalfFromFirstIndiv,genes2[contor],i)){
                 contor++;
             }
             else{
@@ -86,21 +86,13 @@ public class Algorithm {
         return newSol;
     }
 
-    private static Boolean isGenerated(int[] data, int x){
+    private static Boolean isGenerated(int[] data, int x,int poz){
         int nrZ=0;
         int i=0;
-        while (i<data.length&&nrZ<2){
-            if (x==data[i]&&x!=0){
-                return true;
-            }
-            else if (x==0){
-                nrZ++;
-                i++;
-            }
+        int j=0;
+        while (i<poz){
+            if (x==data[i]){return true;}
             i++;
-        }
-        if (i == data.length&&nrZ==1){
-            return false;
         }
         return false;
     }

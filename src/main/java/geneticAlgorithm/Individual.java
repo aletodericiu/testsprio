@@ -24,35 +24,22 @@ public class Individual {
        int i=0;
         while (i<nrTests){
             int gene = (int)(Math.random() * ((nrTests-1) + 1));
-            if (isGenerated(genes,gene))
+            if (isGenerated(genes,gene,i))
                 continue;
             else{
                 genes[i] = gene;
                 i++;
             }
         }
-//        while (i<nrTests){
-//            int gene = (int)(Math.random() * ((nrTests-1) + 1));
-//            genes[i] = gene;
-//               i++;
-//        }
     }
 
-    private Boolean isGenerated(int[] data, int x){
+    private Boolean isGenerated(int[] data, int x,int poz){
         int nrZ=0;
         int i=0;
-        while (i<data.length&&nrZ<2){
-            if (x==data[i]&&x!=0){
-                return true;
-            }
-            else if (x==0){
-                nrZ++;
-                i++;
-            }
+        int j=0;
+        while (i<poz){
+            if (x==data[i]){return true;}
             i++;
-        }
-        if (i == data.length&&nrZ==1){
-            return false;
         }
         return false;
     }
