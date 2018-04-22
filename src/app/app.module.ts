@@ -9,11 +9,13 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
-import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
 import { HomeModule } from './home/home.module';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { FileUploadService } from './components/file-upload/file-upload.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { HomeModule } from './home/home.module';
     LandingComponent,
     ProfileComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +33,12 @@ import { HomeModule } from './home/home.module';
     FormsModule,
     RouterModule,
     AppRoutingModule,
-    HomeModule
+    HomeModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    FileUploadService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
