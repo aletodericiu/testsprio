@@ -17,6 +17,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { FileUploadService } from './components/file-upload/file-upload.service';
 import { HttpModule } from '@angular/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,

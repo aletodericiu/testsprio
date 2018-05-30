@@ -17,17 +17,25 @@ export class FileUploadComponent implements OnInit {
     }
 
     handleFileInput(files: FileList) {
+        console.log('files.item(0)', files.item(0));
         this.fileToUpload = files.item(0);
     }
 
     uploadFile() {
-        this.fileUploadService.postFile(this.fileToUpload).subscribe(
-            data => {
-                console.log('upload successful', data);
-            },
-            error => {
-                console.log(error);
-            });
+
+        if (this.fileToUpload.type === 'application/pdf') {
+            console.log(' not good enpugh');
+        } else {
+            this.fileUploadService.postFile(this.fileToUpload).subscribe(
+                data => {
+                    console.log('upload successful', data);
+                },
+                error => {
+                    console.log(error);
+                });
+        }
+
+        
     }
 
 }

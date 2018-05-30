@@ -8,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
 
 export class LandingComponent implements OnInit {
 
+	alert;
+
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  this.alert =  {
+            id: 4,
+            type: 'danger',
+            message: 'This is a danger alert',
+            icon: 'nc-bell-55'
+        }
+  }
 
 }
