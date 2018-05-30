@@ -5,9 +5,9 @@
             <h1>Aledan</h1>
             <h3>Start designing your landing page here.</h3>
             <br />
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Watch video</a>
-            <app-file-upload></app-file-upload>
-            <button type="button" class="btn btn-outline-neutral btn-round">Download</button>
+            <a routerLink="/dashboard" class="btn btn-outline-neutral btn-round">Dashboard</a>
+            <!--<app-file-upload></app-file-upload>-->
+            <!--<button type="button" class="btn btn-outline-neutral btn-round">Download</button>-->
         </div>
     </div>
 </div>
@@ -196,15 +196,15 @@
     </div>
 </div>
 
-<ngb-alert [type]="alert.type"  [dismissible]="false">
-        <div class="container">
-            <ng-container *ngIf="alert.icon">
-                <i class="nc-icon {{alert.icon}}"></i>
-            </ng-container>
+<!--<ngb-alert [type]="alert.type"  [dismissible]="false">-->
+    <!--<div class="container">-->
+        <!--<ng-container *ngIf="alert.icon">-->
+            <!--<i class="nc-icon {{alert.icon}}"></i>-->
+        <!--</ng-container>-->
 
-            {{ alert.message }}
-            <button type="button" name="button" class="close" (click)="closeAlert(alert)">
-                <i class="nc-icon nc-simple-remove"></i>
-            </button>
-        </div>
-    </ngb-alert>
+        <!--{{ alert.message }}-->
+        <!--<button type="button" name="button" class="close" (click)="closeAlert(alert)">-->
+            <!--<i class="nc-icon nc-simple-remove"></i>-->
+        <!--</button>-->
+    <!--</div>-->
+<!--</ngb-alert>-->

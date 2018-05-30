@@ -16,6 +16,7 @@ import { HomeModule } from './home/home.module';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { FileUploadService } from './components/file-upload/file-upload.service';
 import { HttpModule } from '@angular/http';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HttpModule } from '@angular/http';
     ProfileComponent,
     NavbarComponent,
     FooterComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
