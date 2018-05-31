@@ -8,43 +8,28 @@ import { Individual } from '../../shared/data-types/individual.model';
 @Injectable()
 export class DashboardService {
 
-  private headers: Headers;
+    private headers: Headers;
 
-  constructor(private httpClient: Http) {
-      this.headers = new Headers();
-  }
+    constructor(private httpClient: Http) {
+        this.headers = new Headers();
+    }
 
-  getFaultMatrix(): Observable<FaultMatrix> {
-	  let apiURL = 'http://localhost:8080/getfaultmatrix';
-	  return this.httpClient.get(apiURL) 
-	      .map(data => data.json());
-	}
+    getFaultMatrix(): Observable<FaultMatrix> {
+        const apiURL = 'http://localhost:8080/getfaultmatrix';
+        console.log('hei');
+        return this.httpClient.get(apiURL)
+            .map(data => data.json());
+    }
 
-  getBestIndividual(): Observable<Individual> {
-	  let apiURL = 'http://localhost:8080/getbestindividual';
-	  return this.httpClient.get(apiURL) 
-	      .map(res => { 
-	        return res.json().results.map(item => { 
-	          return new Individual( 
-	              item.nrTests,
-	              item.genes,
-	              item.fitness
-	          );
-	        });
-	      });
-	}
+    getBestIndividual(): Observable<Individual> {
+        const apiURL = 'http://localhost:8080/getbestindividual';
+        return this.httpClient.get(apiURL)
+            .map(data => data.json());
+    }
 
-	getBestThreeIndividuals(): Observable<Individual[]> {
-	  let apiURL = 'http://localhost:8080/getbestthreeindividuals';
-	  return this.httpClient.get(apiURL) 
-	      .map(res => { 
-	        return res.json().results.map(item => { 
-	          return new Individual( 
-	              item.nrTests,
-	              item.genes,
-	              item.fitness
-	          );
-	        });
-	      });
-	}
+    getBestThreeIndividuals(): Observable<Individual[]> {
+        const apiURL = 'http://localhost:8080/getbestthreeindividuals';
+        return this.httpClient.get(apiURL)
+            .map(data => data.json());
+    }
 }
