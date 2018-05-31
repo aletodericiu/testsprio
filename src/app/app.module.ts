@@ -17,6 +17,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { FileUploadService } from './components/file-upload/file-upload.service';
 import { HttpModule } from '@angular/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardService } from './components/dashboard/dashboard.service';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HttpModule
   ],
   providers: [
-    FileUploadService
+    FileUploadService,
+    DashboardService
   ],
   bootstrap: [AppComponent]
 })
