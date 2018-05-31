@@ -6,9 +6,9 @@
             <h3>Here goes the upload and vector and charts</h3>
             <br />
             <app-file-upload></app-file-upload>
-            <button class="btn btn-outline-neutral btn-round" (click)="getFaultMatrix()"></button>
-            <button class="btn btn-outline-neutral btn-round" (click)="getBestIndividual()"></button>
-            <button class="btn btn-outline-neutral btn-round" (click)="getBestThreeIndividuals()"></button>
+            <button class="btn btn-outline-neutral btn-round" (click)="getFaultMatrix()">Show fault matrix details</button>
+            <button class="btn btn-outline-neutral btn-round" (click)="getBestIndividual()">Show best solution</button>
+            <button class="btn btn-outline-neutral btn-round" (click)="getBestThreeIndividuals()">Show top three solutions</button>
             <div *ngIf="showFaultMatrix">
                 Total number of tests: {{faultMatrix.numberOfTests}}
                 <br>
