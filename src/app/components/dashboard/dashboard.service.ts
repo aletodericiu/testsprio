@@ -32,4 +32,11 @@ export class DashboardService {
         return this.httpClient.get(apiURL)
             .map(data => data.json());
     }
+
+    getGraphCoordinatesForIndividual(individual: Individual): Observable<number[]>{
+        const endpoint = 'http://localhost:8080/getgraphcoordinates';
+        return this.httpClient
+            .post(endpoint, individual, {headers: this.headers})
+            .map(data => data.json());
+    }
 }

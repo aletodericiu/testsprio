@@ -1,27 +1,58 @@
 <div class="page-header" style="background-image: url('../assets/img/435296.jpg');">
-  <div class="filter"></div>
-  <div class="container">
-    <div class="motto text-center">
-      <h1>Aledan</h1>
-      <h3>Here goes the upload and vector and charts</h3>
-      <br />
-      <app-file-upload></app-file-upload>
-      <button class="btn btn-outline-neutral btn-round" (click)="getFaultMatrix()"></button>
-      <button class="btn btn-outline-neutral btn-round" (click)="getBestIndividual()"></button>
-      <button class="btn btn-outline-neutral btn-round" (click)="getBestThreeIndividuals()"></button>
+    <div class="filter"></div>
+    <div class="container">
+        <div class="motto text-center">
+            <h1>Aledan</h1>
+            <h3>Here goes the upload and vector and charts</h3>
+            <br />
+            <app-file-upload></app-file-upload>
+            <button class="btn btn-outline-neutral btn-round" (click)="getFaultMatrix()"></button>
+            <button class="btn btn-outline-neutral btn-round" (click)="getBestIndividual()"></button>
+            <button class="btn btn-outline-neutral btn-round" (click)="getBestThreeIndividuals()"></button>
+            <div *ngIf="showFaultMatrix">
+                Total number of tests: {{faultMatrix.numberOfTests}}
+                <br>
+                Total number of faults: {{faultMatrix.numberOfFaults}}
+                <br>
+                The fault matrix:
+                <br>
+                <div *ngFor = "let item of faultMatrix.data">
+                    <span *ngFor = "let subitem of item"> {{ subitem}}
+                    </span>
+                </div>
+            </div>
+            <div *ngIf="showBestIndividual">
+                APFD of the best solution: {{bestIndividual.fitness}}
+                <br>
+                The solution vector:
+                <div *ngFor="let data of [bestIndividual.genes]">
+                    {{data}}
+                </div>
+            </div>
+            <div *ngIf="showBestThreeIndividuals">
+                <div *ngFor="let data of bestThreeIndividuals">
+                    APFD: {{data.fitness}}
+                    <br>
+                    Solution:
+                    <div *ngFor="let ind of [data.genes]">
+                        {{ind}}
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!--<ngb-alert [type]="alert.type"  [dismissible]="false">-->
-  <!--<div class="container">-->
-    <!--<ng-container *ngIf="alert.icon">-->
-      <!--<i class="nc-icon {{alert.icon}}"></i>-->
-    <!--</ng-container>-->
+<!--<div class="container">-->
+<!--<ng-container *ngIf="alert.icon">-->
+<!--<i class="nc-icon {{alert.icon}}"></i>-->
+<!--</ng-container>-->
 
-    <!--{{ alert.message }}-->
-    <!--<button type="button" name="button" class="close" (click)="closeAlert(alert)">-->
-      <!--<i class="nc-icon nc-simple-remove"></i>-->
-    <!--</button>-->
-  <!--</div>-->
+<!--{{ alert.message }}-->
+<!--<button type="button" name="button" class="close" (click)="closeAlert(alert)">-->
+<!--<i class="nc-icon nc-simple-remove"></i>-->
+<!--</button>-->
+<!--</div>-->
 <!--</ngb-alert>-->
