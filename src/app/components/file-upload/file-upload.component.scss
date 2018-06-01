@@ -1,8 +1,21 @@
-input {
-  display: none;
-}
+.container {
+  margin-bottom: 40px;
 
-label {
-  margin-bottom: 0;
-  cursor: pointer;
+  .fileName {
+    display: inline-block;
+    padding-left: 20px;
+
+    span {
+      padding-right: 5px;
+    }
+  }
+
+  input {
+    display: none;
+  }
+
+  label {
+    margin-bottom: 0;
+    cursor: pointer;
+  }
 }

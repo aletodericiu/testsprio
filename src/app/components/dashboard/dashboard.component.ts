@@ -20,6 +20,12 @@ export class DashboardComponent implements OnInit {
     showBestIndividual: boolean;
     showBestThreeIndividuals: boolean;
     public chart = [];
+    showChart: boolean;
+    fileUploaded: boolean;
+
+    showFullMatrixContentTab: boolean;
+    showBestIndividualContentTa: boolean;
+    showBestThreeIndividualsContentTab: boolean;
 
     constructor(private dashboardService: DashboardService) { }
 
@@ -27,12 +33,19 @@ export class DashboardComponent implements OnInit {
         this.showFaultMatrix = false;
         this.showBestIndividual = false;
         this.showBestThreeIndividuals = false;
+        this.createGraphFroBestIndividual();
     }
 
     getFaultMatrix() {
         this.dashboardService.getFaultMatrix().subscribe(
-            data => {this.faultMatrix = data; console.log(this.faultMatrix);   this.showFaultMatrix = true;
+            data => {
+                this.faultMatrix = data;
+                console.log(this.faultMatrix);
+                this.showFaultMatrix = true;
             });
+        this.showFullMatrixContentTab = true;
+        this.showBestIndividualContentTa = false;
+        this.showBestThreeIndividualsContentTab = false;
     }
 
     getBestIndividual() {
@@ -53,6 +66,9 @@ export class DashboardComponent implements OnInit {
                 }
                 // this.graphCoord = this.getGraphCoordinates(this.bestIndividual)
             });
+        this.showFullMatrixContentTab = false;
+        this.showBestIndividualContentTa = true;
+        this.showBestThreeIndividualsContentTab = false;
     }
 
     getBestThreeIndividuals() {
@@ -66,6 +82,9 @@ export class DashboardComponent implements OnInit {
                     }
                 }
             });
+        this.showFullMatrixContentTab = false;
+        this.showBestIndividualContentTa = false;
+        this.showBestThreeIndividualsContentTab = true;
     }
 
     trasnformGraphCoords(coords: number[]) {
@@ -76,20 +95,22 @@ export class DashboardComponent implements OnInit {
         coords.reverse();
     }
 
-    createGraphFroBestIndividual(){
-        var canvas = <HTMLCanvasElement> document.getElementById("canvas");
-        var ctx = canvas.getContext("2d");
+    createGraphFroBestIndividual() {
+        const canvas = <HTMLCanvasElement> document.getElementById('canvas2');
+        const ctx = canvas.getContext('2d');
         this.chart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ["a", "b", "c", "d", "e"],
+                labels: ['a', 'b', 'c', 'd', 'e'],
                 datasets: [
                     {
-                        title: "Some Data",
-                        values: [25, 40, 30, 35, 100],
-                        borderColor: "#3cba9f",
-                        fill: false
-                    },
+                        label: 'Some Data',
+                        data: [0, 7, 10, 10, 10],
+                        borderColor: 'black',
+                        borderWidth: 2,
+                        fill: false,
+                        cubicInterpolationMode: 'monotone'
+                    }
                 ]
             },
             options: {
@@ -108,7 +129,24 @@ export class DashboardComponent implements OnInit {
         });
     }
 
-    //{"nrTests":5,"genes":[2,4,1,0,3],"fitness":0.84} cu asta fac call la aia cu graph si primesc [7,3,0,0,0]
+    onButtonGroupClick($event) {
+        const clickedElement = $event.target || $event.srcElement;
+
+        if (clickedElement.nodeName === 'BUTTON') {
+            const isCertainButtonAlreadyActive = clickedElement.parentElement.querySelector('.active');
+            if ( isCertainButtonAlreadyActive ) {
+                isCertainButtonAlreadyActive.classList.remove('active');
+            }
+            clickedElement.className += ' active';
+        }
+    }
+
+    setFileUploaded(ev) {
+        // this.fileUploaded = ev;
+        this.fileUploaded = true; // for testing purpose
+    }
+
+    // {"nrTests":5,"genes":[2,4,1,0,3],"fitness":0.84} cu asta fac call la aia cu graph si primesc [7,3,0,0,0]
 
 
 }

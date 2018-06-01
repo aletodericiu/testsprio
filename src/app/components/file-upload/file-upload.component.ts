@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FileUploadService } from './file-upload.service';
 
 @Component({
@@ -8,9 +8,12 @@ import { FileUploadService } from './file-upload.service';
 })
 
 export class FileUploadComponent implements OnInit {
+    @Output() fileUploaded = new EventEmitter();;
 
     fileToUpload: File = null;
     spin: boolean;
+    selectedFileName: string;
+    uploadSuccessful: boolean;
 
     constructor(private fileUploadService: FileUploadService) { }
 
@@ -19,6 +22,7 @@ export class FileUploadComponent implements OnInit {
 
     handleFileInput(files: FileList) {
         console.log('files.item(0)', files.item(0));
+        this.selectedFileName = files.item(0).name;
         this.fileToUpload = files.item(0);
     }
 
@@ -33,13 +37,17 @@ export class FileUploadComponent implements OnInit {
             this.fileUploadService.postFile(this.fileToUpload).subscribe(
                 data => {
                     console.log('upload successful', data);
-                    this.fileToUpload = null;
                     this.spin = false;
+                    this.uploadSuccessful = true;
+                    this.fileUploaded.emit(true);
+                    this.fileToUpload = null;
                 },
                 error => {
                     console.log(error);
-                    this.fileToUpload = null;
                     this.spin = false;
+                    this.uploadSuccessful = false;
+                    this.fileToUpload = null;
+                    this.fileUploaded.emit(false);
                 });
         }
     }

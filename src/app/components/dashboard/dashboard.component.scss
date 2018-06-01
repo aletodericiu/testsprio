@@ -1,0 +1,65 @@
+canvas {
+  background: floralwhite !important;
+  height: 300px !important;
+  width: 100% !important;
+  padding: 20px;
+  opacity: 0.6;
+  border-radius: 5px;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-height: 340px;
+
+  div {
+
+    &:first-child {
+      border: 1px solid floralwhite;
+      border-radius: 5px;
+    }
+
+    width: 47%;
+    margin-top: 40px;
+  }
+}
+
+.buttons {
+
+  border-bottom: 1px solid floralwhite;
+  display: flex;
+
+  button {
+    height: 50px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    width: 190px;
+
+    &:hover {
+      color: white;
+      font-weight: bolder;
+
+    }
+
+    &.active {
+      font-weight: bold;
+      color: white;
+
+      //&:before {
+      //  border-bottom: 11px solid floralwhite;
+      //  border-left: 11px solid transparent;
+      //  border-right: 11px solid transparent;
+      //  content: "";
+      //  display: inline-block;
+      //  position: relative;
+      //  bottom: -22px;
+      //  left: 30%;
+      //}
+    }
+  }
+}
+

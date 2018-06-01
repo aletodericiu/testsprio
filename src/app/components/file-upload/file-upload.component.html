@@ -1,9 +1,15 @@
-<div *ngIf="!fileToUpload" class="btn btn-outline-neutral btn-round">
-  <label for="chooseFile"> Upload file </label>
-  <input  type="file" id="chooseFile" (change)="handleFileInput($event.target.files)">
+<div class="container">
+  <div *ngIf="!fileToUpload" class="btn btn-outline-neutral btn-round">
+    <label for="chooseFile"> Select file </label>
+    <input  type="file" id="chooseFile" (change)="handleFileInput($event.target.files)">
+  </div>
+  <button *ngIf="fileToUpload" class="btn btn-outline-neutral btn-round" (click)="uploadFile()">
+    Upload
+  </button>
+
+  <div class="fileName">
+    <span> {{ selectedFileName }} </span>
+    <i *ngIf="spin" class="fa fa-spinner fa-spin"></i>
+    <i *ngIf="uploadSuccessful" class="nc-icon nc-check-2"></i>
+  </div>
 </div>
-<button *ngIf="fileToUpload" class="btn btn-outline-neutral btn-round" (click)="uploadFile()">
-  <!--<i *ngIf="spin" class="fa fa-spinner fa-spin"></i>-->
-  <!--<i class="fa fa-spinner fa-spin"></i>-->
-  <!--Upload-->
-</button>
