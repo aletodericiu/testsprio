@@ -45,6 +45,8 @@ export class DashboardComponent implements OnInit {
                     data2 => {
                         console.log(data2);
                         this.graphCoord =  data2;
+                        this.trasnformGraphCoords(this.graphCoord);
+                        console.log(this.graphCoord);
                     });
                 for (let _i = 0; _i < this.bestIndividual.genes.length; _i++) {
                     this.bestIndividual.genes[_i]++;
@@ -64,6 +66,14 @@ export class DashboardComponent implements OnInit {
                     }
                 }
             });
+    }
+
+    trasnformGraphCoords(coords: number[]) {
+        for (let _j = 1; _j < coords.length; _j++) {
+            coords[_j] += coords[_j - 1];
+        }
+        coords.reverse().push(0);
+        coords.reverse();
     }
 
     createGraphFroBestIndividual(){
