@@ -34,10 +34,16 @@ export class DashboardService {
     }
 
     getGraphCoordinatesForIndividual(individual: Individual): Observable<number[]> {
+
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Accept', 'application/json');
+
+
         const endpoint = 'http://localhost:8080/getgraphcoordinates';
         const body = JSON.stringify( individual );
         return this.httpClient
-            .post(endpoint, body, {headers: this.headers})
+            .post(endpoint, body, {headers: headers})
             .map(data => data.json());
     }
 }

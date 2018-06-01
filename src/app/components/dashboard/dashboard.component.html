@@ -28,6 +28,9 @@
                 <div *ngFor="let data of [bestIndividual.genes]">
                     {{data}}
                 </div>
+                <div>
+                    <canvas #canvas id="canvas">{{ chart }}</canvas>
+                </div>
             </div>
             <div *ngIf="showBestThreeIndividuals">
                 <div *ngFor="let data of bestThreeIndividuals">
