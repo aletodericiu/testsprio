@@ -28,6 +28,7 @@
     "jw-bootstrap-switch-ng2": "1.0.3",
     "ng2-nouislider": "1.6.1",
     "nouislider": "9.2.0",
+    "npm": "^6.1.0",
     "popper.js": "^1.12.3",
     "rxjs": "^5.1.0",
     "webpack": "^3.11.0",
