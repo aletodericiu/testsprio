@@ -46,4 +46,11 @@ export class DashboardService {
             .post(endpoint, body, {headers: headers})
             .map(data => data.json());
     }
+
+    getAPFDForInputVector(dataVector: number[]): Observable<number> {
+        const endpoint = 'http://localhost:8080/getAPFD';
+        return this.httpClient
+            .post(endpoint, dataVector, {headers: this.headers})
+            .map(data => data.json());
+    }
 }

@@ -19,13 +19,17 @@ export class DashboardComponent implements OnInit {
     showFaultMatrix: boolean;
     showBestIndividual: boolean;
     showBestThreeIndividuals: boolean;
+    showAPFDForInputVector: boolean;
     public chart = [];
     showChart: boolean;
     fileUploaded: boolean;
+    appfInputVector: number;
+    dataVector: number[] = [];
 
     showFullMatrixContentTab: boolean;
-    showBestIndividualContentTa: boolean;
+    showBestIndividualContentTab: boolean;
     showBestThreeIndividualsContentTab: boolean;
+    showAPFDForInputVectorContentTab: boolean;
 
     constructor(private dashboardService: DashboardService) { }
 
@@ -33,6 +37,7 @@ export class DashboardComponent implements OnInit {
         this.showFaultMatrix = false;
         this.showBestIndividual = false;
         this.showBestThreeIndividuals = false;
+        this.showAPFDForInputVector = false;
         this.createGraphFroBestIndividual();
     }
 
@@ -44,7 +49,7 @@ export class DashboardComponent implements OnInit {
                 this.showFaultMatrix = true;
             });
         this.showFullMatrixContentTab = true;
-        this.showBestIndividualContentTa = false;
+        this.showBestIndividualContentTab = false;
         this.showBestThreeIndividualsContentTab = false;
     }
 
@@ -60,6 +65,7 @@ export class DashboardComponent implements OnInit {
                         this.graphCoord =  data2;
                         this.trasnformGraphCoords(this.graphCoord);
                         console.log(this.graphCoord);
+                        this.createGraphFroBestIndividual();
                     });
                 for (let _i = 0; _i < this.bestIndividual.genes.length; _i++) {
                     this.bestIndividual.genes[_i]++;
@@ -67,7 +73,7 @@ export class DashboardComponent implements OnInit {
                 // this.graphCoord = this.getGraphCoordinates(this.bestIndividual)
             });
         this.showFullMatrixContentTab = false;
-        this.showBestIndividualContentTa = true;
+        this.showBestIndividualContentTab = true;
         this.showBestThreeIndividualsContentTab = false;
     }
 
@@ -83,7 +89,7 @@ export class DashboardComponent implements OnInit {
                 }
             });
         this.showFullMatrixContentTab = false;
-        this.showBestIndividualContentTa = false;
+        this.showBestIndividualContentTab = false;
         this.showBestThreeIndividualsContentTab = true;
     }
 
@@ -98,14 +104,18 @@ export class DashboardComponent implements OnInit {
     createGraphFroBestIndividual() {
         const canvas = <HTMLCanvasElement> document.getElementById('canvas2');
         const ctx = canvas.getContext('2d');
+        const a = ['a', 'b', 'c', 'd', 'e', 'f'];
+        const b = [0, 7, 10, 10, 10, 10];
         this.chart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: ['a', 'b', 'c', 'd', 'e'],
+                // labels: this.bestIndividual.genes,
                 datasets: [
                     {
                         label: 'Some Data',
                         data: [0, 7, 10, 10, 10],
+                        // data: this.graphCoord,
                         borderColor: 'black',
                         borderWidth: 2,
                         fill: false,
@@ -144,6 +154,24 @@ export class DashboardComponent implements OnInit {
     setFileUploaded(ev) {
         // this.fileUploaded = ev;
         this.fileUploaded = true; // for testing purpose
+    }
+
+    getAPFDForInputVecotr() {
+        const endpoint = 'http://localhost:8080/getAPFD';
+        this.dashboardService.getAPFDForInputVector(this.dataVector).subscribe(
+            data => {
+                this.appfInputVector = data;
+                console.log(this.appfInputVector);
+            });
+    }
+
+    initAPFDForInputVectorTab() {
+        this.showAPFDForInputVectorContentTab = true;
+        this.showBestIndividualContentTab = false;
+        this.showBestThreeIndividualsContentTab = false;
+        this.showFullMatrixContentTab = false;
+        // this.getBestIndividual();
+        // this.dataVector.length = this.bestIndividual.nrTests;
     }
 
     // {"nrTests":5,"genes":[2,4,1,0,3],"fitness":0.84} cu asta fac call la aia cu graph si primesc [7,3,0,0,0]

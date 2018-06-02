@@ -7,6 +7,17 @@ canvas {
   border-radius: 5px;
 }
 
+.specialInput {
+  background: transparent;
+  border-top: none;
+  border-color: black;
+  width: 36px;
+}
+
+.specialInput:focus {
+  outline:none;
+}
+
 .content {
   display: flex;
   flex-wrap: wrap;

@@ -12,6 +12,7 @@
                 <button (click)="getFaultMatrix()">Fault matrix details</button>
                 <button (click)="getBestIndividual()">Best solution</button>
                 <button (click)="getBestThreeIndividuals()">Top three solutions</button>
+                <button (click)="initAPFDForInputVectorTab()">Calculate APFD for your prioritization</button>
             </div>
 
             <div *ngIf="showFaultMatrix">
@@ -25,6 +26,7 @@
                     <span *ngFor = "let subitem of item"> {{ subitem}}
                     </span>
                 </div>
+
             </div>
             <div *ngIf="showBestIndividual">
                 APFD of the best solution: {{bestIndividual.fitness}}
@@ -60,7 +62,7 @@
                     <br>
                 </div>
             </div>
-            <div [hidden]="!showBestIndividualContentTa" class="content">
+            <div [hidden]="!showBestIndividualContentTab" class="content">
                 <div>
                     Total number of tests: 100
                     <br>
@@ -91,6 +93,17 @@
                 </div>
                 <div>
                     <canvas #canvas id="canvas5">{{ chart }}</canvas>
+                </div>
+            </div>
+            <div [hidden]="!showAPFDForInputVectorContentTab" class="content">
+                <div>
+                    Give the arrangements of test cases:
+                    <!--<div *ngFor = "let item of bestIndividual">   -->
+                        <input type="text" class="specialInput">
+                    <!--</div>-->
+                </div>
+                <div>
+                    <canvas #canvas id="canvas6">{{ chart }}</canvas>
                 </div>
             </div>
         </div>
