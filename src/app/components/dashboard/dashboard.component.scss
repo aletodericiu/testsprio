@@ -24,7 +24,7 @@ canvas {
   justify-content: space-between;
   min-height: 340px;
 
-  div {
+  > div {
 
     &:first-child {
       border: 1px solid floralwhite;

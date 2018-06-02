@@ -9,6 +9,7 @@
 
             <br/>
             <div *ngIf="fileUploaded" class="buttons" (click)="onButtonGroupClick($event)">
+            <!--<div class="buttons" (click)="onButtonGroupClick($event)">-->
                 <button (click)="getFaultMatrix()">Fault matrix details</button>
                 <button (click)="getBestIndividual()">Best solution</button>
                 <button (click)="getBestThreeIndividuals()">Top three solutions</button>
@@ -76,35 +77,26 @@
                 </div>
             </div>
             <div [hidden]="!showBestThreeIndividualsContentTab" class="content">
-                <!--<div>-->
-                    <!--Total number of tests: 100-->
-                    <!--<br>-->
-                    <!--Total number of faults: 2000-->
-                    <!--<br>-->
-                    <!--The fault matrix:-->
-                    <!--<br>-->
+                <div>
+                    <div *ngFor="let data of test">
+                        APFD: {{data.fitness}}
+                        <br>
+                        Solution:
+                        <div *ngFor="let ind of [data.genes]">
+                            {{ind}}
+                        </div>
+                        <br>
+                    </div>
+                </div>
 
-                <!--</div>-->
-                <!--<div>-->
-                    <!--<canvas #canvas id="canvas3">{{ chart }}</canvas>-->
-                <!--</div>-->
-                <!--<div>-->
-                    <!--<canvas #canvas id="canvas4">{{ chart }}</canvas>-->
-                <!--</div>-->
-                <!--<div>-->
-                    <!--<canvas #canvas id="canvas5">{{ chart }}</canvas>-->
-                <!--</div>-->
-                <div *ngFor="let data of bestThreeIndividuals">
-                    APFD: {{data.fitness}}
-                    <br>
-                    Solution:
-                    <div *ngFor="let ind of [data.genes]">
-                        {{ind}}
-                    </div>
-                    <br>
-                    <div>
-                        <canvas #canvas id="canvas" >{{ data.chart }}</canvas>
-                    </div>
+                <div>
+                    <canvas #canvas id="top3canvas1"></canvas>
+                </div>
+                <div>
+                    <canvas #canvas id="top3canvas2"></canvas>
+                </div>
+                <div>
+                    <canvas #canvas id="top3canvas3"></canvas>
                 </div>
             </div>
             <div [hidden]="!showAPFDForInputVectorContentTab" class="content">

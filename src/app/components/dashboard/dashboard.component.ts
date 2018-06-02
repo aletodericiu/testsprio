@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit {
     showBestIndividualContentTab: boolean;
     showBestThreeIndividualsContentTab: boolean;
     showAPFDForInputVectorContentTab: boolean;
+    test;
 
     constructor(private dashboardService: DashboardService) { }
 
@@ -71,21 +72,62 @@ export class DashboardComponent implements OnInit {
 
     getBestThreeIndividuals() {
         this.dashboardService.getBestThreeIndividuals().subscribe(
-            data => {this.bestThreeIndividuals = data;
-            console.log(this.bestThreeIndividuals);
-            this.showBestThreeIndividuals = true;
-            for (let _j = 0; _j < this.bestThreeIndividuals.length; _j++) {
-                this.createGraphForIndividual(this.bestThreeIndividuals[_j]);
-                    for (let _i = 0; _i < this.bestThreeIndividuals[_j].genes.length; _i++) {
-                        this.bestThreeIndividuals[_j].genes[_i]++;
-                    }
-                }
-                console.log(this.bestThreeIndividuals);
+            data => {
+                this.bestThreeIndividuals = data;
+                this.createGraphsForTop3(this.bestThreeIndividuals);
             });
+
         this.showFullMatrixContentTab = false;
         this.showBestIndividualContentTab = false;
         this.showBestThreeIndividualsContentTab = true;
         this.showAPFDForInputVectorContentTab = false;
+
+        // this.test = [
+        //     {'nrTests': 5, 'genes': [2, 4, 0, 1, 3], 'fitness': 0.84},
+        //     {'nrTests': 5, 'genes': [2, 3, 4, 1, 0], 'fitness': 0.7799999999999999},
+        //     {'nrTests': 5, 'genes': [4, 2, 3, 1, 0], 'fitness': 0.7599999999999999}
+        // ];
+        //
+        // this.createGraphsForTop3(this.test);
+    }
+
+    createGraphsForTop3(data) {
+        for (let i = 0; i < data.length; i++) {
+
+            this.trasnformGraphCoords(data[i].genes);
+
+            const canvas = <HTMLCanvasElement> document.getElementById(`top3canvas${i + 1}`);
+            const ctx = canvas.getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data[i].genes,
+                    datasets: [
+                        {
+                            label: 'Some Data',
+                            data: data[i].genes,
+                            borderColor: 'black',
+                            borderWidth: 2,
+                            fill: false,
+                            cubicInterpolationMode: 'monotone'
+                        }
+                    ]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true
+                        }],
+                        yAxes: [{
+                            display: true
+                        }],
+                    }
+                }
+            });
+        }
     }
 
     createGraphForIndividual(individual: Individual) {
