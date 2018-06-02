@@ -15,7 +15,6 @@ export class DashboardComponent implements OnInit {
     faultMatrix: FaultMatrix = new FaultMatrix(null, null, null);
     bestIndividual: Individual = new Individual(null, null, null);
     bestThreeIndividuals: Individual[];
-    graphCoord: number[];
     showFaultMatrix: boolean;
     showBestIndividual: boolean;
     showBestThreeIndividuals: boolean;
@@ -38,7 +37,6 @@ export class DashboardComponent implements OnInit {
         this.showBestIndividual = false;
         this.showBestThreeIndividuals = false;
         this.showAPFDForInputVector = false;
-        this.createGraphFroBestIndividual();
     }
 
     getFaultMatrix() {
@@ -59,18 +57,10 @@ export class DashboardComponent implements OnInit {
                 this.bestIndividual = data;
                 console.log(this.bestIndividual);
                 this.showBestIndividual = true;
-                this.dashboardService.getGraphCoordinatesForIndividual(this.bestIndividual).subscribe(
-                    data2 => {
-                        console.log(data2);
-                        this.graphCoord =  data2;
-                        this.trasnformGraphCoords(this.graphCoord);
-                        console.log(this.graphCoord);
-                        this.createGraphFroBestIndividual();
-                    });
+                this.createGraphForIndividual(this.bestIndividual);
                 for (let _i = 0; _i < this.bestIndividual.genes.length; _i++) {
                     this.bestIndividual.genes[_i]++;
                 }
-                // this.graphCoord = this.getGraphCoordinates(this.bestIndividual)
             });
         this.showFullMatrixContentTab = false;
         this.showBestIndividualContentTab = true;
@@ -83,14 +73,25 @@ export class DashboardComponent implements OnInit {
             console.log(this.bestThreeIndividuals);
             this.showBestThreeIndividuals = true;
             for (let _j = 0; _j < this.bestThreeIndividuals.length; _j++) {
+                this.createGraphForIndividual(this.bestThreeIndividuals[_j]);
                     for (let _i = 0; _i < this.bestThreeIndividuals[_j].genes.length; _i++) {
                         this.bestThreeIndividuals[_j].genes[_i]++;
                     }
                 }
+                console.log(this.bestThreeIndividuals);
             });
         this.showFullMatrixContentTab = false;
         this.showBestIndividualContentTab = false;
         this.showBestThreeIndividualsContentTab = true;
+    }
+
+    createGraphForIndividual(individual: Individual) {
+        this.dashboardService.getGraphCoordinatesForIndividual(individual).subscribe(
+            data2 => {
+                individual.graphCoords =  data2;
+                this.trasnformGraphCoords(individual.graphCoords);
+                this.createGraphVisualForIndividual(individual.chart, individual);
+            });
     }
 
     trasnformGraphCoords(coords: number[]) {
@@ -101,21 +102,21 @@ export class DashboardComponent implements OnInit {
         coords.reverse();
     }
 
-    createGraphFroBestIndividual() {
+    createGraphVisualForIndividual(chart: Chart, individual: Individual) {
         const canvas = <HTMLCanvasElement> document.getElementById('canvas2');
         const ctx = canvas.getContext('2d');
         const a = ['a', 'b', 'c', 'd', 'e', 'f'];
         const b = [0, 7, 10, 10, 10, 10];
-        this.chart = new Chart(ctx, {
+        chart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['a', 'b', 'c', 'd', 'e'],
-                // labels: this.bestIndividual.genes,
+                //labels: ['a', 'b', 'c', 'd', 'e'],
+                labels: individual.genes,
                 datasets: [
                     {
                         label: 'Some Data',
-                        data: [0, 7, 10, 10, 10],
-                        // data: this.graphCoord,
+                        // data: [0, 7, 10, 10, 10],
+                        data: individual.graphCoords,
                         borderColor: 'black',
                         borderWidth: 2,
                         fill: false,
