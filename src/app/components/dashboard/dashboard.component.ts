@@ -49,6 +49,7 @@ export class DashboardComponent implements OnInit {
         this.showFullMatrixContentTab = true;
         this.showBestIndividualContentTab = false;
         this.showBestThreeIndividualsContentTab = false;
+        this.showAPFDForInputVectorContentTab = false;
     }
 
     getBestIndividual() {
@@ -65,6 +66,7 @@ export class DashboardComponent implements OnInit {
         this.showFullMatrixContentTab = false;
         this.showBestIndividualContentTab = true;
         this.showBestThreeIndividualsContentTab = false;
+        this.showAPFDForInputVectorContentTab = false;
     }
 
     getBestThreeIndividuals() {
@@ -83,6 +85,7 @@ export class DashboardComponent implements OnInit {
         this.showFullMatrixContentTab = false;
         this.showBestIndividualContentTab = false;
         this.showBestThreeIndividualsContentTab = true;
+        this.showAPFDForInputVectorContentTab = false;
     }
 
     createGraphForIndividual(individual: Individual) {
@@ -110,7 +113,7 @@ export class DashboardComponent implements OnInit {
         chart = new Chart(ctx, {
             type: 'line',
             data: {
-                //labels: ['a', 'b', 'c', 'd', 'e'],
+                // labels: ['a', 'b', 'c', 'd', 'e'],
                 labels: individual.genes,
                 datasets: [
                     {
