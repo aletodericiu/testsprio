@@ -74,7 +74,21 @@ export class DashboardComponent implements OnInit {
         this.dashboardService.getBestThreeIndividuals().subscribe(
             data => {
                 this.bestThreeIndividuals = data;
-                this.createGraphsForTop3(this.bestThreeIndividuals);
+
+                for (let _j = 0; _j < this.bestThreeIndividuals.length; _j++) {
+
+                    this.dashboardService.getGraphCoordinatesForIndividual(this.bestThreeIndividuals[_j]).subscribe(
+                        data2 => {
+                            this.bestThreeIndividuals[_j].graphCoords =  data2;
+                            this.trasnformGraphCoords(this.bestThreeIndividuals[_j].graphCoords);
+                            this.createGraphsForTop3(this.bestThreeIndividuals[_j], _j);
+                        });
+
+                    for (let _i = 0; _i < this.bestThreeIndividuals[_j].genes.length; _i++) {
+                        this.bestThreeIndividuals[_j].genes[_i]++;
+                    }
+                }
+                console.log(this.bestThreeIndividuals);
             });
 
         this.showFullMatrixContentTab = false;
@@ -91,21 +105,21 @@ export class DashboardComponent implements OnInit {
         // this.createGraphsForTop3(this.test);
     }
 
-    createGraphsForTop3(data) {
-        for (let i = 0; i < data.length; i++) {
+    createGraphsForTop3(data, i) {
+        // for (let i = 0; i < data.length; i++) {
 
-            this.trasnformGraphCoords(data[i].genes);
+            // this.trasnformGraphCoords(data[i].genes);
 
             const canvas = <HTMLCanvasElement> document.getElementById(`top3canvas${i + 1}`);
             const ctx = canvas.getContext('2d');
             const chart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: data[i].genes,
+                    labels: data.genes,
                     datasets: [
                         {
                             label: 'Some Data',
-                            data: data[i].genes,
+                            data: data.graphCoords,
                             borderColor: 'black',
                             borderWidth: 2,
                             fill: false,
@@ -127,7 +141,7 @@ export class DashboardComponent implements OnInit {
                     }
                 }
             });
-        }
+        // }
     }
 
     createGraphForIndividual(individual: Individual) {
