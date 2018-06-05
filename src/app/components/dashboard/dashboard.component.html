@@ -120,10 +120,10 @@
                     </span>
                     <br>
                     <br>
-                    <button class="btn btn-outline-neutral btn-round"> Calculate AFPD </button>
+                    <button class="btn btn-outline-neutral btn-round"(click)="calculateAPFD()"> Calculate AFPD </button>
                 </div>
                 <div>
-                    <canvas #canvas id="canvas6"  (click)="calculateAPFD()">{{ chart }}</canvas>
+                    <canvas #canvas id="canvas6">{{ chart }}</canvas>
                 </div>
             </div>
         </div>

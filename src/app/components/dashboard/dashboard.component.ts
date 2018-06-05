@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
     appfInputVector: number;
     dataVector: number[] = [];
     arr: any[];
-    arri: any[] = [];
+    arri: any[]= [];
 
     showFullMatrixContentTab: boolean;
     showBestIndividualContentTab: boolean;
