@@ -165,7 +165,9 @@ export class DashboardComponent implements OnInit {
         console.log(ev);
         // this.fileUploaded = true; // for testing purpose
         this.showFullMatrixContentTab = ev;
-        //this.getFaultMatrix();
+        if (ev) {
+            this.getFaultMatrix();
+        }
     }
 
     getAPFDForInputVecotr() {

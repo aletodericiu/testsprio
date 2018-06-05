@@ -113,9 +113,11 @@
             <div [hidden]="!showAPFDForInputVectorContentTab" class="content">
                 <div>
                     Give the arrangements of test cases:
-                    <!--<div *ngFor = "let item of bestIndividual">   -->
+                    <br>
+                    <span ng-repeat="n in [] | range:10">
                         <input type="text" class="specialInput">
-                    <!--</div>-->
+                    </span>
+                    <br>
                     <button class="btn btn-outline-neutral btn-round"> Calculate AFPD </button>
                 </div>
                 <div>
