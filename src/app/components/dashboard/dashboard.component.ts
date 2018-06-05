@@ -148,18 +148,6 @@ export class DashboardComponent implements OnInit {
         });
     }
 
-    onButtonGroupClick($event) {
-        const clickedElement = $event.target || $event.srcElement;
-
-        if (clickedElement.nodeName === 'BUTTON') {
-            const isCertainButtonAlreadyActive = clickedElement.parentElement.querySelector('.active');
-            if ( isCertainButtonAlreadyActive ) {
-                isCertainButtonAlreadyActive.classList.remove('active');
-            }
-            clickedElement.className += ' active';
-        }
-    }
-
     setFileUploaded(ev) {
         this.fileUploaded = ev;
         console.log(ev);

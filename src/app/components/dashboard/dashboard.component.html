@@ -8,12 +8,12 @@
             <app-file-upload (fileUploaded)="setFileUploaded($event)"></app-file-upload>
 
             <br/>
-            <div *ngIf="fileUploaded" class="buttons" (click)="onButtonGroupClick($event)">
+            <div *ngIf="fileUploaded" class="buttons">
             <!--<div class="buttons" (click)="onButtonGroupClick($event)">-->
-                <button (click)="getFaultMatrix()">Fault matrix details</button>
-                <button (click)="getBestIndividual()">Best solution</button>
-                <button (click)="getBestThreeIndividuals()">Top three solutions</button>
-                <button (click)="initAPFDForInputVectorTab()">Calculate APFD for your prioritization</button>
+                <button [class.active]="showFullMatrixContentTab" (click)="getFaultMatrix()">Fault matrix details</button>
+                <button [class.active]="showBestIndividualContentTab" (click)="getBestIndividual()">Best solution</button>
+                <button [class.active]="showBestThreeIndividualsContentTab" (click)="getBestThreeIndividuals()">Top three solutions</button>
+                <button [class.active]="showAPFDForInputVectorContentTab" (click)="initAPFDForInputVectorTab()">Calculate APFD for your prioritization</button>
             </div>
 
             <!--<div *ngIf="showFaultMatrix">-->
