@@ -9,19 +9,20 @@ export class FileUploadService {
   private headers: Headers;
 
   constructor(private httpClient: Http) {
-      this.headers = new Headers();
-      // this.headers.append('Content-Type', 'multipart/form-data');
 
   }
 
-    postFile(fileToUpload: File): Observable<boolean> {
-        
-       const endpoint = 'http://localhost:8080/post';
-       const formData: FormData = new FormData();
-       formData.append('filename', fileToUpload, fileToUpload.name);
-       return this.httpClient
-           .post(endpoint, formData, {headers: this.headers})
-           .map(data => data.json());
+    postFile(fileToUpload: File): Observable<any> {
+
+        const headers = new Headers();
+        // headers.append('Content-Type', 'multipart/form-data');
+        // headers.append('Accept', 'multipart/form-data');
+
+        const endpoint = 'http://localhost:8080/post';
+        const formData: FormData = new FormData();
+        formData.append('filename', fileToUpload, fileToUpload.name);
+        return this.httpClient
+            .post(endpoint, formData, {headers: headers});
 
 
     }

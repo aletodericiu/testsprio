@@ -55,48 +55,59 @@
 
             <div [hidden]="!showFullMatrixContentTab" class="content">
                 <div>
-                    Total number of tests: 100
+                    Total number of tests: {{faultMatrix.numberOfTests}}
                     <br>
-                    Total number of faults: 2000
+                    Total number of faults: {{faultMatrix.numberOfFaults}}
                     <br>
                     The fault matrix:
                     <br>
+                    <div *ngFor = "let item of faultMatrix.data">
+                    <span *ngFor = "let subitem of item"> {{ subitem}}
+                    </span>
+                    </div>
                 </div>
             </div>
             <div [hidden]="!showBestIndividualContentTab" class="content">
                 <div>
-                    Total number of tests: 100
+                    APFD of the best solution: {{bestIndividual.fitness}}
                     <br>
-                    Total number of faults: 2000
-                    <br>
-                    The fault matrix:
-                    <br>
+                    The solution vector:
+                    <div *ngFor="let data of [bestIndividual.genes]">
+                    {{data}}
+                    </div>
                 </div>
                 <div>
-                    <canvas #canvas id="canvas2">{{ bestIndividual.chart }}</canvas>
+                    <canvas #canvas id="canvas0">{{ bestIndividual.chart }}</canvas>
                 </div>
             </div>
             <div [hidden]="!showBestThreeIndividualsContentTab" class="content">
                 <div>
-                    <div *ngFor="let data of test">
+                    <div *ngFor="let data of bestThreeIndividuals; let i = index">
                         APFD: {{data.fitness}}
                         <br>
                         Solution:
                         <div *ngFor="let ind of [data.genes]">
                             {{ind}}
                         </div>
+                        <!--<div>-->
+                            <!--<canvas #canvas id="canvas2{{i}}">{{bestThreeIndividuals[i].chart}}</canvas>-->
+                        <!--</div>-->
                         <br>
                     </div>
                 </div>
-
+                <!--<div>-->
+                    <!--<canvas #canvas id="canvas90">-->
+                        <!--{{bestThreeIndividuals[0].chart}}-->
+                    <!--</canvas>-->
+                <!--</div>-->
                 <div>
-                    <canvas #canvas id="top3canvas1"></canvas>
+                    <canvas #canvas id="canvas1"></canvas>
                 </div>
                 <div>
-                    <canvas #canvas id="top3canvas2"></canvas>
+                    <canvas #canvas id="canvas2"></canvas>
                 </div>
                 <div>
-                    <canvas #canvas id="top3canvas3"></canvas>
+                    <canvas #canvas id="canvas3"></canvas>
                 </div>
             </div>
             <div [hidden]="!showAPFDForInputVectorContentTab" class="content">

@@ -8,7 +8,7 @@ import { FileUploadService } from './file-upload.service';
 })
 
 export class FileUploadComponent implements OnInit {
-    @Output() fileUploaded = new EventEmitter();;
+    @Output() fileUploaded = new EventEmitter();
 
     fileToUpload: File = null;
     spin: boolean;
@@ -43,7 +43,7 @@ export class FileUploadComponent implements OnInit {
                     this.fileToUpload = null;
                 },
                 error => {
-                    console.log(error);
+                    console.error(error);
                     this.spin = false;
                     this.uploadSuccessful = false;
                     this.fileToUpload = null;

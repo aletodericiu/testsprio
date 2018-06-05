@@ -59,7 +59,7 @@ export class DashboardComponent implements OnInit {
                 this.bestIndividual = data;
                 console.log(this.bestIndividual);
                 this.showBestIndividual = true;
-                this.createGraphForIndividual(this.bestIndividual);
+                this.createGraphForIndividual(this.bestIndividual, 0);
                 for (let _i = 0; _i < this.bestIndividual.genes.length; _i++) {
                     this.bestIndividual.genes[_i]++;
                 }
@@ -74,7 +74,15 @@ export class DashboardComponent implements OnInit {
         this.dashboardService.getBestThreeIndividuals().subscribe(
             data => {
                 this.bestThreeIndividuals = data;
-                this.createGraphsForTop3(this.bestThreeIndividuals);
+                // this.createGraphsForTop3(this.bestThreeIndividuals);
+                for (let _j = 0; _j < this.bestThreeIndividuals.length; _j++) {
+                    console.log(this.bestThreeIndividuals[_j]);
+                    this.createGraphForIndividual(this.bestThreeIndividuals[_j], _j + 1);
+                    for (let _i = 0; _i < this.bestThreeIndividuals[_j].genes.length; _i++) {
+                        this.bestThreeIndividuals[_j].genes[_i]++;
+                    }
+                    // this.createGraphForIndividual(this.bestThreeIndividuals[_j]);
+                }
             });
 
         this.showFullMatrixContentTab = false;
@@ -82,60 +90,15 @@ export class DashboardComponent implements OnInit {
         this.showBestThreeIndividualsContentTab = true;
         this.showAPFDForInputVectorContentTab = false;
 
-        // this.test = [
-        //     {'nrTests': 5, 'genes': [2, 4, 0, 1, 3], 'fitness': 0.84},
-        //     {'nrTests': 5, 'genes': [2, 3, 4, 1, 0], 'fitness': 0.7799999999999999},
-        //     {'nrTests': 5, 'genes': [4, 2, 3, 1, 0], 'fitness': 0.7599999999999999}
-        // ];
-        //
-        // this.createGraphsForTop3(this.test);
     }
 
-    createGraphsForTop3(data) {
-        for (let i = 0; i < data.length; i++) {
-
-            this.trasnformGraphCoords(data[i].genes);
-
-            const canvas = <HTMLCanvasElement> document.getElementById(`top3canvas${i + 1}`);
-            const ctx = canvas.getContext('2d');
-            const chart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: data[i].genes,
-                    datasets: [
-                        {
-                            label: 'Some Data',
-                            data: data[i].genes,
-                            borderColor: 'black',
-                            borderWidth: 2,
-                            fill: false,
-                            cubicInterpolationMode: 'monotone'
-                        }
-                    ]
-                },
-                options: {
-                    legend: {
-                        display: false
-                    },
-                    scales: {
-                        xAxes: [{
-                            display: true
-                        }],
-                        yAxes: [{
-                            display: true
-                        }],
-                    }
-                }
-            });
-        }
-    }
-
-    createGraphForIndividual(individual: Individual) {
+    createGraphForIndividual(individual: Individual, index) {
         this.dashboardService.getGraphCoordinatesForIndividual(individual).subscribe(
             data2 => {
                 individual.graphCoords =  data2;
                 this.trasnformGraphCoords(individual.graphCoords);
-                this.createGraphVisualForIndividual(individual.chart, individual);
+                console.log(individual.graphCoords);
+                this.createGraphVisualForIndividual(individual, index);
             });
     }
 
@@ -147,12 +110,12 @@ export class DashboardComponent implements OnInit {
         coords.reverse();
     }
 
-    createGraphVisualForIndividual(chart: Chart, individual: Individual) {
-        const canvas = <HTMLCanvasElement> document.getElementById('canvas2');
+    createGraphVisualForIndividual(individual: Individual, index) {
+        const canvas = <HTMLCanvasElement> document.getElementById(`canvas${index}`);
         const ctx = canvas.getContext('2d');
         const a = ['a', 'b', 'c', 'd', 'e', 'f'];
         const b = [0, 7, 10, 10, 10, 10];
-        chart = new Chart(ctx, {
+        individual.chart = new Chart(ctx, {
             type: 'line',
             data: {
                 // labels: ['a', 'b', 'c', 'd', 'e'],
@@ -198,8 +161,11 @@ export class DashboardComponent implements OnInit {
     }
 
     setFileUploaded(ev) {
-        // this.fileUploaded = ev;
-        this.fileUploaded = true; // for testing purpose
+        this.fileUploaded = ev;
+        console.log(ev);
+        // this.fileUploaded = true; // for testing purpose
+        this.showFullMatrixContentTab = ev;
+        //this.getFaultMatrix();
     }
 
     getAPFDForInputVecotr() {
