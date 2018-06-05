@@ -24,6 +24,8 @@ export class DashboardComponent implements OnInit {
     fileUploaded: boolean;
     appfInputVector: number;
     dataVector: number[] = [];
+    arr: any[];
+    arri: any[] = [];
 
     showFullMatrixContentTab: boolean;
     showBestIndividualContentTab: boolean;
@@ -40,10 +42,16 @@ export class DashboardComponent implements OnInit {
         this.showAPFDForInputVector = false;
     }
 
+    fillArrayWithNumbers(n) {
+        this.arr = Array.apply(null, Array(n));
+        return this.arr.map(function (x, i) { return i });
+    }
+
     getFaultMatrix() {
         this.dashboardService.getFaultMatrix().subscribe(
             data => {
                 this.faultMatrix = data;
+                this.fillArrayWithNumbers(this.faultMatrix.numberOfTests);
                 console.log(this.faultMatrix);
                 this.showFaultMatrix = true;
             });
@@ -179,6 +187,10 @@ export class DashboardComponent implements OnInit {
         this.showFullMatrixContentTab = false;
         // this.getBestIndividual();
         // this.dataVector.length = this.bestIndividual.nrTests;
+    }
+
+    calculateAPFD() {
+        console.log(this.arri);
     }
 
     // {"nrTests":5,"genes":[2,4,1,0,3],"fitness":0.84} cu asta fac call la aia cu graph si primesc [7,3,0,0,0]
