@@ -165,9 +165,14 @@ export class DashboardComponent implements OnInit {
         console.log(ev);
         // this.fileUploaded = true; // for testing purpose
         this.showFullMatrixContentTab = ev;
-        if (ev) {
-            this.getFaultMatrix();
-        }
+        ev ? this.getFaultMatrix() : this.resetAll();
+    }
+
+    resetAll() {
+        this.showFullMatrixContentTab = false;
+        this.showBestIndividualContentTab = false;
+        this.showBestThreeIndividualsContentTab = false;
+        this.showAPFDForInputVectorContentTab = false;
     }
 
     getAPFDForInputVecotr() {

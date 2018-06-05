@@ -24,6 +24,7 @@ export class FileUploadComponent implements OnInit {
         console.log('files.item(0)', files.item(0));
         this.selectedFileName = files.item(0).name;
         this.fileToUpload = files.item(0);
+        this.uploadSuccessful = false;
     }
 
     uploadFile() {
