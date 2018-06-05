@@ -114,14 +114,16 @@
                 <div>
                     Give the arrangements of test cases:
                     <br>
-                    <span ng-repeat="n in [] | range:10">
-                        <input type="text" class="specialInput">
+                    <br>
+                    <span *ngFor="let ind of arr; let i = index">
+                        <input type="text" class="specialInput" [(ngModel)]="arri[i]">
                     </span>
+                    <br>
                     <br>
                     <button class="btn btn-outline-neutral btn-round"> Calculate AFPD </button>
                 </div>
                 <div>
-                    <canvas #canvas id="canvas6">{{ chart }}</canvas>
+                    <canvas #canvas id="canvas6"  (click)="calculateAPFD()">{{ chart }}</canvas>
                 </div>
             </div>
         </div>
