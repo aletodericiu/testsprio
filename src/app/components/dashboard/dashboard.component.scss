@@ -28,7 +28,7 @@ canvas {
 .msg {
   display: none;
 
-  &.eror {
+  &.error {
     display: block;
     color: red;
   }
@@ -96,17 +96,6 @@ canvas {
     &.active {
       font-weight: bold;
       color: white;
-
-      //&:before {
-      //  border-bottom: 11px solid floralwhite;
-      //  border-left: 11px solid transparent;
-      //  border-right: 11px solid transparent;
-      //  content: "";
-      //  display: inline-block;
-      //  position: relative;
-      //  bottom: -22px;
-      //  left: 65px;
-      //}
     }
   }
 }

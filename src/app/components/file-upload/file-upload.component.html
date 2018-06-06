@@ -7,9 +7,11 @@
     Upload
   </button>
 
-  <div class="fileName">
+  <div *ngIf="selectedFileName" class="fileName">
     <span> {{ selectedFileName }} </span>
     <i *ngIf="spin" class="fa fa-spinner fa-spin"></i>
     <i *ngIf="uploadSuccessful" class="nc-icon nc-check-2"></i>
   </div>
+
+  <div *ngIf="showFileErrMsg" class="fileName errorMsg"><i class="nc-icon nc-bell-55"></i> Please Select a cool file! </div>
 </div>

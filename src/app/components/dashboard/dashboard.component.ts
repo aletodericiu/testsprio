@@ -214,8 +214,8 @@ export class DashboardComponent implements OnInit {
                 count++;
             }
         }
-        // const errMsg1 = document.getElementById('errMsg1');
-        // count > 1 ? errMsg1.className += ' error' : errMsg1.className = 'msg';
+        const errMsg1 = document.getElementById('errMsg1');
+        errMsg1.className = (count > 1) ? 'msg error' : 'msg';
         return count > 1;
     }
 
