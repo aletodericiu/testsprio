@@ -21,6 +21,8 @@ export class FileUploadComponent implements OnInit {
     }
 
     handleFileInput(files: FileList) {
+        console.log(' files ', files);
+        // this.fileToUpload = null;
         console.log('files.item(0)', files.item(0));
         this.selectedFileName = files.item(0).name;
         this.fileToUpload = files.item(0);
@@ -29,12 +31,10 @@ export class FileUploadComponent implements OnInit {
 
     uploadFile() {
         this.spin = true;
-
-        if (this.fileToUpload.type === 'application/pdf') {
-            console.log(' not good enough for ale');
-            this.fileToUpload = null;
-            this.spin = false;
-        } else {
+        console.log(this.fileToUpload.type);
+        if (this.fileToUpload.name.substring(this.fileToUpload.name.lastIndexOf('.') + 1) === 'csv' ||
+            this.fileToUpload.name.substring(this.fileToUpload.name.lastIndexOf('.') + 1) === 'txt' ||
+            this.fileToUpload.name.substring(this.fileToUpload.name.lastIndexOf('.') + 1) === 'xls') {
             this.fileUploadService.postFile(this.fileToUpload).subscribe(
                 data => {
                     console.log('upload successful', data);
@@ -50,6 +50,10 @@ export class FileUploadComponent implements OnInit {
                     this.fileToUpload = null;
                     this.fileUploaded.emit(false);
                 });
+        } else {
+            console.log(' not good enough for ale');
+            this.fileToUpload = null;
+            this.spin = false;
         }
     }
 

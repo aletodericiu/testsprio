@@ -10,9 +10,28 @@ canvas {
 .specialInput {
   background: transparent;
   border-top: none;
-  border-color: black;
+  border-left: none;
+  border-right: none;
+  border-color: white;
   width: 36px;
   border-width: 1px;
+  color: white;
+  text-align: center;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.error {
+  color: red;
+}
+
+.msg {
+  display: none;
+
+  &.eror {
+    display: block;
+    color: red;
+  }
 }
 
 .specialInput:focus {
@@ -26,14 +45,30 @@ canvas {
   min-height: 340px;
 
   > div {
+    //transition: all .9s;
 
     &:first-child {
       border-radius: 5px;
+      width: auto;
+      min-width: 47%;
+
+      >div {
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        span:nth-child(1), span:nth-child(3) {
+          font-weight: bold;
+        };
+      }
+
+      table {
+        margin: 0 auto;
+      }
     }
 
     width: 47%;
     background: rgba(100,91,87,0.7);
-    margin: 40px 0;
+    margin: 40px auto;
   }
 }
 
@@ -41,6 +76,7 @@ canvas {
 
   border-bottom: 1px solid floralwhite;
   display: flex;
+  justify-content: space-between;
 
   button {
     height: 50px;
@@ -49,7 +85,7 @@ canvas {
     color: #fff;
     outline: none;
     cursor: pointer;
-    width: 190px;
+    width: auto;
 
     &:hover {
       color: white;
@@ -75,3 +111,6 @@ canvas {
   }
 }
 
+.bold{
+  font-weight: bold;
+}

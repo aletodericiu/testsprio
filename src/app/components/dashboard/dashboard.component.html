@@ -16,65 +16,31 @@
                 <button [class.active]="showAPFDForInputVectorContentTab" (click)="initAPFDForInputVectorTab()">Calculate APFD for your prioritization</button>
             </div>
 
-            <!--<div *ngIf="showFaultMatrix">-->
-                <!--Total number of tests: {{faultMatrix.numberOfTests}}-->
-                <!--<br>-->
-                <!--Total number of faults: {{faultMatrix.numberOfFaults}}-->
-                <!--<br>-->
-                <!--The fault matrix:-->
-                <!--<br>-->
-                <!--<div *ngFor = "let item of faultMatrix.data">-->
-                    <!--<span *ngFor = "let subitem of item"> {{ subitem}}-->
-                    <!--</span>-->
-                <!--</div>-->
-
-            <!--</div>-->
-            <!--<div *ngIf="showBestIndividual">-->
-                <!--APFD of the best solution: {{bestIndividual.fitness}}-->
-                <!--<br>-->
-                <!--The solution vector:-->
-                <!--<div *ngFor="let data of [bestIndividual.genes]">-->
-                    <!--{{data}}-->
-                <!--</div>-->
-                <!--<div>-->
-                    <!--<canvas #canvas id="canvas">{{ chart }}</canvas>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div *ngIf="showBestThreeIndividuals">-->
-                <!--<div *ngFor="let data of bestThreeIndividuals">-->
-                    <!--APFD: {{data.fitness}}-->
-                    <!--<br>-->
-                    <!--Solution:-->
-                    <!--<div *ngFor="let ind of [data.genes]">-->
-                        <!--{{ind}}-->
-                    <!--</div>-->
-                    <!--<br>-->
-                <!--</div>-->
-            <!--</div>-->
-
 
             <div [hidden]="!showFullMatrixContentTab" class="content">
                 <div>
-                    Total number of tests: {{faultMatrix.numberOfTests}}
-                    <br>
-                    Total number of faults: {{faultMatrix.numberOfFaults}}
-                    <br>
-                    The fault matrix:
-                    <br>
-                    <div *ngFor = "let item of faultMatrix.data">
-                    <span *ngFor = "let subitem of item"> {{ subitem}}
-                    </span>
+                    <div> <span> Total number of tests: </span> {{faultMatrix.numberOfTests}} </div>
+                    <div> <span> Total number of faults: </span> {{faultMatrix.numberOfFaults}} </div>
+                    <div> <span> Fault matrix: </span> </div>
+                    <div>
+                        <table>
+                            <tr *ngFor = "let item of faultMatrix.data">
+                                <td *ngFor = "let subitem of item"> {{ subitem}} </td>
+                            </tr>
+                        </table>
                     </div>
+
                 </div>
             </div>
             <div [hidden]="!showBestIndividualContentTab" class="content">
                 <div>
-                    APFD of the best solution: {{bestIndividual.fitness}}
+                    <span class="bold"> APFD: </span> {{bestIndividual.fitness}}
+                        <br>
                     <br>
-                    The solution vector:
-                    <div *ngFor="let data of [bestIndividual.genes]">
+                    <span class="bold"> The solution vector: </span>
+                    <span *ngFor="let data of bestIndividual.genes">
                     {{data}}
-                    </div>
+                    </span>
                 </div>
                 <div>
                     <canvas #canvas id="canvas0">{{ bestIndividual.chart }}</canvas>
@@ -83,23 +49,15 @@
             <div [hidden]="!showBestThreeIndividualsContentTab" class="content">
                 <div>
                     <div *ngFor="let data of bestThreeIndividuals; let i = index">
-                        APFD: {{data.fitness}}
+                        <span> APFD: </span> {{data.fitness}}
                         <br>
-                        Solution:
-                        <div *ngFor="let ind of [data.genes]">
+                        <span> Solution: </span>
+                        <span *ngFor="let ind of data.genes">
                             {{ind}}
-                        </div>
-                        <!--<div>-->
-                            <!--<canvas #canvas id="canvas2{{i}}">{{bestThreeIndividuals[i].chart}}</canvas>-->
-                        <!--</div>-->
+                        </span>
                         <br>
                     </div>
                 </div>
-                <!--<div>-->
-                    <!--<canvas #canvas id="canvas90">-->
-                        <!--{{bestThreeIndividuals[0].chart}}-->
-                    <!--</canvas>-->
-                <!--</div>-->
                 <div>
                     <canvas #canvas id="canvas1"></canvas>
                 </div>
@@ -116,14 +74,21 @@
                     <br>
                     <br>
                     <span *ngFor="let ind of arr; let i = index">
-                        <input type="text" class="specialInput" [(ngModel)]="arri[i]">
+                        <input type="text" class="specialInput" [(ngModel)]="arri[i]"
+                               [ngClass]="{'error': (checkIfElementRepeatsInVector(arri[i]) || checkIfElementExceedsRange(arri[i]))}">
                     </span>
+                    <!--<span class="msg" id="errMsg1">-->
+                        <!--The value repeats.-->
+                    <!--</span>-->
                     <br>
                     <br>
                     <button class="btn btn-outline-neutral"(click)="calculateAPFD()"> Calculate AFPD </button>
+                    <br>
+                    <span *ngIf="apfdInputVector"> APFD: {{apfdInputVector}}
+                    </span>
                 </div>
-                <div>
-                    <canvas #canvas id="canvas6">{{ chart }}</canvas>
+                <div [hidden]="!apfdInputVector">
+                    <canvas #canvas id="canvas6"></canvas>
                 </div>
             </div>
         </div>

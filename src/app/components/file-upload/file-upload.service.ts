@@ -2,19 +2,20 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class FileUploadService {
 
   private headers: Headers;
 
-  constructor(private httpClient: Http) {
+  constructor(private httpClient: HttpClient) {
 
   }
 
     postFile(fileToUpload: File): Observable<any> {
 
-        const headers = new Headers();
+        const headers = new HttpHeaders();
         // headers.append('Content-Type', 'multipart/form-data');
         // headers.append('Accept', 'multipart/form-data');
 

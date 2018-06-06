@@ -15,31 +15,24 @@ export class DashboardComponent implements OnInit {
     faultMatrix: FaultMatrix = new FaultMatrix(null, null, null);
     bestIndividual: Individual = new Individual(null, null, null);
     bestThreeIndividuals: Individual[];
-    showFaultMatrix: boolean;
-    showBestIndividual: boolean;
-    showBestThreeIndividuals: boolean;
     showAPFDForInputVector: boolean;
     public chart = [];
-    showChart: boolean;
     fileUploaded: boolean;
-    appfInputVector: number;
+    apfdInputVector: number;
     dataVector: number[] = [];
     arr: any[];
-    arri: any[]= [];
-
+    arri: string[]= [];
     showFullMatrixContentTab: boolean;
     showBestIndividualContentTab: boolean;
     showBestThreeIndividualsContentTab: boolean;
     showAPFDForInputVectorContentTab: boolean;
     test;
+    testMatrix;
 
     constructor(private dashboardService: DashboardService) { }
 
     ngOnInit() {
-        this.showFaultMatrix = false;
-        this.showBestIndividual = false;
-        this.showBestThreeIndividuals = false;
-        this.showAPFDForInputVector = false;
+
     }
 
     fillArrayWithNumbers(n) {
@@ -53,12 +46,12 @@ export class DashboardComponent implements OnInit {
                 this.faultMatrix = data;
                 this.fillArrayWithNumbers(this.faultMatrix.numberOfTests);
                 console.log(this.faultMatrix);
-                this.showFaultMatrix = true;
             });
         this.showFullMatrixContentTab = true;
         this.showBestIndividualContentTab = false;
         this.showBestThreeIndividualsContentTab = false;
         this.showAPFDForInputVectorContentTab = false;
+        this.resetCalculateAPFDForInputView();
     }
 
     getBestIndividual() {
@@ -66,7 +59,6 @@ export class DashboardComponent implements OnInit {
             data => {
                 this.bestIndividual = data;
                 console.log(this.bestIndividual);
-                this.showBestIndividual = true;
                 this.createGraphForIndividual(this.bestIndividual, 0);
                 for (let _i = 0; _i < this.bestIndividual.genes.length; _i++) {
                     this.bestIndividual.genes[_i]++;
@@ -76,6 +68,8 @@ export class DashboardComponent implements OnInit {
         this.showBestIndividualContentTab = true;
         this.showBestThreeIndividualsContentTab = false;
         this.showAPFDForInputVectorContentTab = false;
+        this.apfdInputVector = null;
+        this.resetCalculateAPFDForInputView();
     }
 
     getBestThreeIndividuals() {
@@ -97,6 +91,8 @@ export class DashboardComponent implements OnInit {
         this.showBestIndividualContentTab = false;
         this.showBestThreeIndividualsContentTab = true;
         this.showAPFDForInputVectorContentTab = false;
+        this.apfdInputVector = null;
+        this.resetCalculateAPFDForInputView();
 
     }
 
@@ -121,17 +117,16 @@ export class DashboardComponent implements OnInit {
     createGraphVisualForIndividual(individual: Individual, index) {
         const canvas = <HTMLCanvasElement> document.getElementById(`canvas${index}`);
         const ctx = canvas.getContext('2d');
-        const a = ['a', 'b', 'c', 'd', 'e', 'f'];
-        const b = [0, 7, 10, 10, 10, 10];
+        // for (let _i = 0; _i < individual.genes.length; _i++) {
+        //     individual.genes[_i]++;
+        // }
         individual.chart = new Chart(ctx, {
             type: 'line',
             data: {
-                // labels: ['a', 'b', 'c', 'd', 'e'],
                 labels: individual.genes,
                 datasets: [
                     {
                         label: 'Some Data',
-                        // data: [0, 7, 10, 10, 10],
                         data: individual.graphCoords,
                         borderColor: 'black',
                         borderWidth: 2,
@@ -157,9 +152,9 @@ export class DashboardComponent implements OnInit {
     }
 
     setFileUploaded(ev) {
+        // ev = true; // test only
         this.fileUploaded = ev;
         console.log(ev);
-        // this.fileUploaded = true; // for testing purpose
         this.showFullMatrixContentTab = ev;
         ev ? this.getFaultMatrix() : this.resetAll();
     }
@@ -175,8 +170,8 @@ export class DashboardComponent implements OnInit {
         const endpoint = 'http://localhost:8080/getAPFD';
         this.dashboardService.getAPFDForInputVector(this.dataVector).subscribe(
             data => {
-                this.appfInputVector = data;
-                console.log(this.appfInputVector);
+                this.apfdInputVector = data;
+                console.log(this.apfdInputVector);
             });
     }
 
@@ -185,15 +180,50 @@ export class DashboardComponent implements OnInit {
         this.showBestIndividualContentTab = false;
         this.showBestThreeIndividualsContentTab = false;
         this.showFullMatrixContentTab = false;
-        // this.getBestIndividual();
-        // this.dataVector.length = this.bestIndividual.nrTests;
     }
 
     calculateAPFD() {
+        // console.log(this.arri);
+        const myArr = [];
+        this.arri.forEach((item: any) => myArr.push(parseInt(item, 10) - 1));
         console.log(this.arri);
+        console.log('myArr', myArr);
+        this.dashboardService.getAPFDForInputVector(myArr).subscribe(
+            data => {
+                this.apfdInputVector = data;
+                const indv = new Individual(myArr.length, myArr, this.apfdInputVector);
+                this.createGraphForIndividual(indv,6);
+                // for (let _i = 0; _i < myArr.length; _i++) {
+                //     myArr[_i]++;
+                // }
+                console.log(this.apfdInputVector);
+            });
     }
 
-    // {"nrTests":5,"genes":[2,4,1,0,3],"fitness":0.84} cu asta fac call la aia cu graph si primesc [7,3,0,0,0]
+    resetCalculateAPFDForInputView() {
+        this.apfdInputVector = null;
+        for (let _i = 0; _i < this.arri.length; _i++) {
+            this.arri[_i] = null;
+        }
+    }
 
+    checkIfElementRepeatsInVector(elem: any): boolean {
+        let count = 0;
+        for (let _i = 0; _i < this.arri.length; _i++) {
+            if (elem === this.arri[_i]) {
+                count++;
+            }
+        }
+        // const errMsg1 = document.getElementById('errMsg1');
+        // count > 1 ? errMsg1.className += ' error' : errMsg1.className = 'msg';
+        return count > 1;
+    }
+
+    checkIfElementExceedsRange(elem: any): boolean {
+        if (elem <= 0 || elem > this.faultMatrix.numberOfTests) {
+            return true;
+        }
+            return false;
+    }
 
 }
