@@ -8,10 +8,8 @@ import { Individual } from '../../shared/data-types/individual.model';
 @Injectable()
 export class DashboardService {
 
-    private headers: Headers;
 
     constructor(private httpClient: Http) {
-        this.headers = new Headers();
     }
 
     getFaultMatrix(): Observable<FaultMatrix> {
@@ -48,9 +46,10 @@ export class DashboardService {
     }
 
     getAPFDForInputVector(dataVector: any[]): Observable<number> {
+        const headers = new Headers();
         const endpoint = 'http://localhost:8080/getAPFD';
         return this.httpClient
-            .post(endpoint, dataVector, {headers: this.headers})
+            .post(endpoint, dataVector, {headers: headers})
             .map(data => data.json());
     }
 }

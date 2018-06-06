@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import { FileUploadService } from './file-upload.service';
+import { Subscriber } from "rxjs/Subscriber";
 
 @Component({
     selector: 'app-file-upload',
@@ -7,13 +8,14 @@ import { FileUploadService } from './file-upload.service';
     styleUrls: ['./file-upload.component.scss']
 })
 
-export class FileUploadComponent implements OnInit {
+export class FileUploadComponent implements OnInit, OnDestroy {
     @Output() fileUploaded = new EventEmitter();
 
     fileToUpload: File = null;
     spin: boolean;
     selectedFileName: string;
     uploadSuccessful: boolean;
+    subscriber: any;
 
     constructor(private fileUploadService: FileUploadService) { }
 
@@ -35,13 +37,13 @@ export class FileUploadComponent implements OnInit {
         if (this.fileToUpload.name.substring(this.fileToUpload.name.lastIndexOf('.') + 1) === 'csv' ||
             this.fileToUpload.name.substring(this.fileToUpload.name.lastIndexOf('.') + 1) === 'txt' ||
             this.fileToUpload.name.substring(this.fileToUpload.name.lastIndexOf('.') + 1) === 'xls') {
-            this.fileUploadService.postFile(this.fileToUpload).subscribe(
+            this.subscriber = this.fileUploadService.postFile(this.fileToUpload).subscribe(
                 data => {
                     console.log('upload successful', data);
                     this.spin = false;
                     this.uploadSuccessful = true;
                     this.fileUploaded.emit(true);
-                    this.fileToUpload = null;
+                   this.fileToUpload = null;
                 },
                 error => {
                     console.error(error);
@@ -56,5 +58,7 @@ export class FileUploadComponent implements OnInit {
             this.spin = false;
         }
     }
-
+    ngOnDestroy() {
+        this.subscriber.unsubscribe();
+    }
 }
