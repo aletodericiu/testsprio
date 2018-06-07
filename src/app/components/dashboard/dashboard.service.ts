@@ -15,7 +15,7 @@ export class DashboardService {
     getFaultMatrix(): Observable<FaultMatrix> {
         const apiURL = 'http://localhost:8080/getfaultmatrix';
         console.log('hei');
-        return this.httpClient.get(apiURL)
+        return this.httpClient.get(apiURL, {headers: new Headers()})
             .map(data => data.json());
     }
 

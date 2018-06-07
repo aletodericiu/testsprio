@@ -1,6 +1,9 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import { FileUploadService } from './file-upload.service';
 import { Subscriber } from 'rxjs/Subscriber';
+import {Http, Headers} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
     selector: 'app-file-upload',
@@ -17,8 +20,11 @@ export class FileUploadComponent implements OnInit, OnDestroy {
     uploadSuccessful: boolean;
     subscriber: any;
     showFileErrMsg: boolean;
+    private headers: Headers;
 
-    constructor(private fileUploadService: FileUploadService) { }
+    constructor(private fileUploadService: FileUploadService, private httpClient: HttpClient) {
+        this.headers = new Headers();
+    }
 
     ngOnInit() {
     }
@@ -42,7 +48,7 @@ export class FileUploadComponent implements OnInit, OnDestroy {
         this.spin = true;
         console.log(this.fileToUpload.type);
 
-        this.subscriber = this.fileUploadService.postFile(this.fileToUpload).subscribe(
+        this.subscriber = this.postFile(this.fileToUpload).subscribe(
             data => {
                 console.log('upload successful', data);
                 this.spin = false;
@@ -58,6 +64,19 @@ export class FileUploadComponent implements OnInit, OnDestroy {
                 this.fileUploaded.emit(false);
             });
     }
+
+    postFile(fileToUpload: File): Observable<any> {
+
+        const heders = new Headers();
+        const endpoint = 'http://localhost:8080/post';
+        const formData: FormData = new FormData();
+        formData.append('filename', fileToUpload, fileToUpload.name);
+        return this.httpClient
+            .post(endpoint, formData, {headers: new HttpHeaders()});
+
+
+    }
+
     ngOnDestroy() {
         this.subscriber.unsubscribe();
     }

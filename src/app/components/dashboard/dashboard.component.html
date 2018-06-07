@@ -82,7 +82,9 @@
                     <br>
                     <button class="btn btn-outline-neutral"(click)="calculateAPFD()"> Calculate AFPD </button>
                     <br>
-                    <span *ngIf="apfdInputVector"> APFD: {{apfdInputVector}}
+                    <br>
+                    <br>
+                    <span *ngIf="apfdInputVector">  <span class="bold"> APFD: </span> {{apfdInputVector}}
                     </span>
                 </div>
                 <div [hidden]="!apfdInputVector">
