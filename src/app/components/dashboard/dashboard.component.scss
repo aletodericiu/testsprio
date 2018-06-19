@@ -128,10 +128,24 @@ canvas {
 
 #back-button {
   position: fixed;
-  top: 10px;
-  left: 10px;
+  top: 20px;
+  left: 30px;
 }
 
-.btn-group{
-  width: 390px;
+.metric-buttons {
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    padding-bottom: 40px;
+  }
+
+  button {
+    width: 400px;
+    margin: 10px auto;
+  }
+}
+
+.btn-outline-neutral:hover {
+  transform: scale(1.1);
 }

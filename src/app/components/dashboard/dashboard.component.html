@@ -3,51 +3,18 @@
     <div class="container">
         <div class="motto text-center">
 
-            <div *ngIf="!selectedMetric">
+            <div *ngIf="!selectedMetric" class="metric-buttons">
                 <h3>Please select the metric: </h3>
-                <br>
 
-                <div class="[ form-group ]">
-                    <input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default-apbc" autocomplete="off"
-                           [(ngModel)]="selectedMetric" (ngModelChange)="onChange1($event, 'apbc')"/>
-                    <div class="[ btn-group ]">
-                        <label for="fancy-checkbox-default-apbc" class="[ btn btn-default ]">
-                            <span class="[ glyphicon glyphicon-ok ]"></span>
-                            <span> </span>
-                        </label>
-                        <label for="fancy-checkbox-default-apbc" class="[ btn btn-default active ]">
-                            APBC - Average Percentage Branch Coverage
-                        </label>
-                    </div>
-                </div>
-
-                <div class="[ form-group ]">
-                    <input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default-apfd" autocomplete="off"
-                           [(ngModel)]="selectedMetric" (ngModelChange)="onChange1($event, 'apfd')"/>
-                    <div class="[ btn-group ]">
-                        <label for="fancy-checkbox-default-apfd" class="[ btn btn-default ]">
-                            <span class="[ glyphicon glyphicon-ok ]"></span>
-                            <span> </span>
-                        </label>
-                        <label for="fancy-checkbox-default-apfd" class="[ btn btn-default active ]">
-                            APFD - Average Percentage Faults Detection
-                        </label>
-                    </div>
-                </div>
-
-                <div class="[ form-group ]">
-                    <input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default-apsc" autocomplete="off"
-                           [(ngModel)]="selectedMetric" (ngModelChange)="onChange1($event, 'apsc')"/>
-                    <div class="[ btn-group ]">
-                        <label for="fancy-checkbox-default-apsc" class="[ btn btn-default ]">
-                            <span class="[ glyphicon glyphicon-ok ]"></span>
-                            <span> </span>
-                        </label>
-                        <label for="fancy-checkbox-default-apsc" class="[ btn btn-default active ]">
-                            APSC - Average Percentage Statement Coverage
-                        </label>
-                    </div>
-                </div>
+                <button *ngIf="true" class="btn btn-outline-neutral" (click)="selectMetric('apbc')">
+                    APBC - Average Percentage Branch Coverage
+                </button>
+                <button *ngIf="true" class="btn btn-outline-neutral" (click)="selectMetric('apfd')">
+                    APFD - Average Percentage Faults Detection
+                </button>
+                <button *ngIf="true" class="btn btn-outline-neutral" (click)="selectMetric('apsc')">
+                    APSC - Average Percentage Statement Coverage
+                </button>
             </div>
 
             <div *ngIf="selectedMetric">

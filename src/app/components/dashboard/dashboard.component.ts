@@ -227,9 +227,7 @@ export class DashboardComponent implements OnInit {
             return false;
     }
 
-    onChange1(event, value) {
-        console.log(event);
-        console.log(value);
+    selectMetric(value) {
         this.selectedMetric = value;
     }
 
