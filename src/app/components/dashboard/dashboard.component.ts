@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
     showAPFDForInputVectorContentTab: boolean;
     test;
     testMatrix;
+    selectedMetric;
 
     constructor(private dashboardService: DashboardService) { }
 
@@ -192,7 +193,7 @@ export class DashboardComponent implements OnInit {
             data => {
                 this.apfdInputVector = data;
                 const indv = new Individual(myArr.length, myArr, this.apfdInputVector);
-                this.createGraphForIndividual(indv,6);
+                this.createGraphForIndividual(indv, 6);
                 // for (let _i = 0; _i < myArr.length; _i++) {
                 //     myArr[_i]++;
                 // }
@@ -224,6 +225,12 @@ export class DashboardComponent implements OnInit {
             return true;
         }
             return false;
+    }
+
+    onChange1(event, value) {
+        console.log(event);
+        console.log(value);
+        this.selectedMetric = value;
     }
 
 }

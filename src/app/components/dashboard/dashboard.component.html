@@ -2,10 +2,62 @@
     <div class="filter"></div>
     <div class="container">
         <div class="motto text-center">
-            <!--<h1>Aledan</h1>-->
-            <h3 *ngIf="!fileUploaded">Please select and upload the data file!</h3>
-            <br />
-            <app-file-upload (fileUploaded)="setFileUploaded($event)"></app-file-upload>
+
+            <div *ngIf="!selectedMetric">
+                <h3>Please select the metric: </h3>
+
+                <div class="[ form-group ]">
+                    <input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default-apbc" autocomplete="off"
+                           [(ngModel)]="selectedMetric" (ngModelChange)="onChange1($event, 'apbc')"/>
+                    <div class="[ btn-group ]">
+                        <label for="fancy-checkbox-default-apbc" class="[ btn btn-default ]">
+                            <span class="[ glyphicon glyphicon-ok ]"></span>
+                            <span> </span>
+                        </label>
+                        <label for="fancy-checkbox-default-apbc" class="[ btn btn-default active ]">
+                            APBC - Average Percentage Branch Coverage
+                        </label>
+                    </div>
+                </div>
+
+                <div class="[ form-group ]">
+                    <input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default-apfd" autocomplete="off"
+                           [(ngModel)]="selectedMetric" (ngModelChange)="onChange1($event, 'apfd')"/>
+                    <div class="[ btn-group ]">
+                        <label for="fancy-checkbox-default-apfd" class="[ btn btn-default ]">
+                            <span class="[ glyphicon glyphicon-ok ]"></span>
+                            <span> </span>
+                        </label>
+                        <label for="fancy-checkbox-default-apfd" class="[ btn btn-default active ]">
+                            APFD - Average Percentage Faults Detection
+                        </label>
+                    </div>
+                </div>
+
+                <div class="[ form-group ]">
+                    <input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default-apsc" autocomplete="off"
+                           [(ngModel)]="selectedMetric" (ngModelChange)="onChange1($event, 'apsc')"/>
+                    <div class="[ btn-group ]">
+                        <label for="fancy-checkbox-default-apsc" class="[ btn btn-default ]">
+                            <span class="[ glyphicon glyphicon-ok ]"></span>
+                            <span> </span>
+                        </label>
+                        <label for="fancy-checkbox-default-apsc" class="[ btn btn-default active ]">
+                            APSC - Average Percentage Statement Coverage
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="selectedMetric">
+                <h3 *ngIf="!fileUploaded">Please select and upload the data file!</h3>
+                <br />
+                <app-file-upload (fileUploaded)="setFileUploaded($event)"></app-file-upload>
+            </div>
+
+            <div class="btn btn-outline-neutral" *ngIf="selectedMetric" (click)="selectedMetric = null; fileUploaded = null">
+                Back
+            </div>
 
             <br/>
             <div *ngIf="fileUploaded" class="buttons">
@@ -17,78 +69,88 @@
             </div>
 
 
-            <div [hidden]="!showFullMatrixContentTab" class="content">
-                <div>
-                    <div> <span> Total number of tests: </span> {{faultMatrix.numberOfTests}} </div>
-                    <div> <span> Total number of faults: </span> {{faultMatrix.numberOfFaults}} </div>
-                    <div> <span> Fault matrix: </span> </div>
+            <div *ngIf="fileUploaded">
+                <div [hidden]="!showFullMatrixContentTab" class="content">
                     <div>
-                        <table>
-                            <tr *ngFor = "let item of faultMatrix.data">
-                                <td *ngFor = "let subitem of item"> {{ subitem}} </td>
-                            </tr>
-                        </table>
-                    </div>
+                        <div> <span> Total number of tests: </span> {{faultMatrix.numberOfTests}} </div>
+                        <div> <span> Total number of faults: </span> {{faultMatrix.numberOfFaults}} </div>
+                        <div> <span> Fault matrix: </span> </div>
+                        <div>
+                            <table>
+                                <tr *ngFor = "let item of faultMatrix.data">
+                                    <td *ngFor = "let subitem of item"> {{ subitem}} </td>
+                                </tr>
+                            </table>
+                        </div>
 
+                    </div>
                 </div>
-            </div>
-            <div [hidden]="!showBestIndividualContentTab" class="content">
-                <div>
-                    <span class="bold"> APFD: </span> {{bestIndividual.fitness}}
+                <div [hidden]="!showBestIndividualContentTab" class="content">
+                    <div>
+                        <span class="bold"> APFD: </span> {{bestIndividual.fitness}}
                         <br>
-                    <br>
-                    <span class="bold"> The solution vector: </span>
-                    <span *ngFor="let data of bestIndividual.genes">
+                        <br>
+                        <span class="bold"> The solution vector: </span>
+                        <span *ngFor="let data of bestIndividual.genes">
                     {{data}}
                     </span>
-                </div>
-                <div>
-                    <canvas #canvas id="canvas0">{{ bestIndividual.chart }}</canvas>
-                </div>
-            </div>
-            <div [hidden]="!showBestThreeIndividualsContentTab" class="content">
-                <div>
-                    <div *ngFor="let data of bestThreeIndividuals; let i = index">
-                        <span> APFD: </span> {{data.fitness}}
-                        <br>
-                        <span> Solution: </span>
-                        <span *ngFor="let ind of data.genes">
-                            {{ind}}
-                        </span>
-                        <br>
+                    </div>
+                    <div>
+                        <canvas #canvas id="canvas0">{{ bestIndividual.chart }}</canvas>
                     </div>
                 </div>
-                <div>
-                    <canvas #canvas id="canvas1"></canvas>
+                <div [hidden]="!showBestThreeIndividualsContentTab" class="content">
+                    <div>
+                        <div *ngFor="let data of bestThreeIndividuals; let i = index">
+                            <span> APFD: </span> {{data.fitness}}
+                            <br>
+                            <span> Solution: </span>
+                            <span *ngFor="let ind of data.genes">
+                            {{ind}}
+                        </span>
+                            <br>
+                        </div>
+                    </div>
+                    <div>
+                        <canvas #canvas id="canvas1"></canvas>
+                    </div>
+                    <div>
+                        <canvas #canvas id="canvas2"></canvas>
+                    </div>
+                    <div>
+                        <canvas #canvas id="canvas3"></canvas>
+                    </div>
                 </div>
-                <div>
-                    <canvas #canvas id="canvas2"></canvas>
-                </div>
-                <div>
-                    <canvas #canvas id="canvas3"></canvas>
-                </div>
-            </div>
-            <div [hidden]="!showAPFDForInputVectorContentTab" class="content">
-                <div>
-                    Give the arrangements of test cases:
-                    <br>
-                    <br>
-                    <span *ngFor="let ind of arr; let i = index">
-                        <input type="text" class="specialInput" [(ngModel)]="arri[i]"
-                               [ngClass]="{'error': (checkIfElementRepeatsInVector(arri[i]) || checkIfElementExceedsRange(arri[i]))}">
+                <div [hidden]="!showAPFDForInputVectorContentTab" class="content">
+                    <div>
+                        Give the arrangements of test cases:
+                        <br>
+                        <br>
+                        <form #formRef="ngForm">
+                            <input *ngFor="let ind of arr; let i = index" type="text" class="specialInput"
+                                   name="name{{i}}" [(ngModel)]="arri[i]" #name="ngModel" required
+                                   (ngModelChange)="onChange($event)">
+                            <!--[ngClass]="{'error': (checkIfElementRepeatsInVector(arri[i]) || checkIfElementExceedsRange(arri[i]))}"-->
+                        </form>
+                        <!--arri {{arri | json}}-->
+                        <br>
+                        <!--formRef {{formRef | json}}-->
+
+                        <!--<div [ngClass]="{'error': test3(arri[i])}"> test </div>-->
+                        <span class="msg" id="errMsg1"> The value repeats. </span>
+                        <span class="msg" id="errMsg2"> Out of range </span>
+                        <br>
+                        <br>
+                        <button [hidden]="!formRef.valid" class="btn btn-outline-neutral" id="calculateBtn" (click)="calculateAPFD()"> Calculate AFPD </button>
+                        <br>
+                        <br>
+                        <br>
+                        <span *ngIf="apfdInputVector">  <span class="bold"> APFD: </span> {{apfdInputVector}}
                     </span>
-                    <span class="msg" id="errMsg1"> The value repeats. </span>
-                    <br>
-                    <br>
-                    <button class="btn btn-outline-neutral"(click)="calculateAPFD()"> Calculate AFPD </button>
-                    <br>
-                    <br>
-                    <br>
-                    <span *ngIf="apfdInputVector">  <span class="bold"> APFD: </span> {{apfdInputVector}}
-                    </span>
-                </div>
-                <div [hidden]="!apfdInputVector">
-                    <canvas #canvas id="canvas6"></canvas>
+                    </div>
+                    <div [hidden]="!apfdInputVector">
+                        <canvas #canvas id="canvas6"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
