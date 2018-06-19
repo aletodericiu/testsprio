@@ -100,30 +100,27 @@
                 <div [hidden]="!showAPFDForInputVectorContentTab" class="content">
                     <div>
                         <h5>Give the arrangements of test cases:</h5>
-                        *The numbers should be in the range: [1,{{faultMatrix.numberOfTests}}]
+                        *The numbers should be in the range: [ 1, {{faultMatrix.numberOfTests}} ]
                         <br>
                         <br>
                         <form #formRef="ngForm">
                             <input *ngFor="let ind of arr; let i = index" type="text" class="specialInput"
                                    name="name{{i}}" [(ngModel)]="arri[i]" #name="ngModel" required
+                                   [ngClass]="{'error': (checkIfElementRepeatsInVector(arri[i]) || checkIfElementExceedsRange(arri[i]))}"
                                    (ngModelChange)="onChange($event)">
-                            <!--[ngClass]="{'error': (checkIfElementRepeatsInVector(arri[i]) || checkIfElementExceedsRange(arri[i]))}"-->
                         </form>
-                        <!--arri {{arri | json}}-->
                         <br>
-                        <!--formRef {{formRef | json}}-->
-
-                        <!--<div [ngClass]="{'error': test3(arri[i])}"> test </div>-->
                         <span class="msg" id="errMsg1"> The value repeats. </span>
-                        <span class="msg" id="errMsg2"> Out of range </span>
-                        <br>
+                        <span class="msg" id="errMsg2"> Value out of range </span>
                         <br>
                         <button [hidden]="!formRef.valid" class="btn btn-outline-neutral" id="calculateBtn" (click)="calculateAPFD()"> Calculate AFPD </button>
                         <br>
                         <br>
                         <br>
-                        <span *ngIf="apfdInputVector">  <span class="bold"> APFD: </span> {{apfdInputVector}}
-                    </span>
+                        <span *ngIf="apfdInputVector">
+                            <span class="bold"> APFD: </span>
+                            {{apfdInputVector}}
+                        </span>
                     </div>
                     <div [hidden]="!apfdInputVector">
                         <canvas #canvas id="canvas6"></canvas>

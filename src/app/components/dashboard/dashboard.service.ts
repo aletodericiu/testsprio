@@ -8,25 +8,28 @@ import { Individual } from '../../shared/data-types/individual.model';
 @Injectable()
 export class DashboardService {
 
+    host: string;
 
     constructor(private httpClient: Http) {
+        // this.host = '192.168.166.145';
+        this.host = 'localhost';
     }
 
     getFaultMatrix(): Observable<FaultMatrix> {
-        const apiURL = 'http://localhost:8080/getfaultmatrix';
+        const apiURL = `http://${this.host}:8080/getfaultmatrix`;
         console.log('hei');
         return this.httpClient.get(apiURL, {headers: new Headers()})
             .map(data => data.json());
     }
 
     getBestIndividual(): Observable<Individual> {
-        const apiURL = 'http://localhost:8080/getbestindividual';
+        const apiURL = `http://${this.host}:8080/getbestindividual`;
         return this.httpClient.get(apiURL)
             .map(data => data.json());
     }
 
     getBestThreeIndividuals(): Observable<Individual[]> {
-        const apiURL = 'http://localhost:8080/getbestthreeindividuals';
+        const apiURL = `http://${this.host}:8080/getbestthreeindividuals`;
         return this.httpClient.get(apiURL)
             .map(data => data.json());
     }
@@ -38,7 +41,7 @@ export class DashboardService {
         headers.append('Accept', 'application/json');
 
 
-        const endpoint = 'http://localhost:8080/getgraphcoordinates';
+        const endpoint = `http://${this.host}:8080/getgraphcoordinates;`
         const body = JSON.stringify( individual );
         return this.httpClient
             .post(endpoint, body, {headers: headers})
@@ -47,7 +50,7 @@ export class DashboardService {
 
     getAPFDForInputVector(dataVector: any[]): Observable<number> {
         const headers = new Headers();
-        const endpoint = 'http://localhost:8080/getAPFD';
+        const endpoint = `http://${this.host}:8080/getAPFD`;
         return this.httpClient
             .post(endpoint, dataVector, {headers: headers})
             .map(data => data.json());

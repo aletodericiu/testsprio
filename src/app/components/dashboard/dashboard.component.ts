@@ -155,7 +155,6 @@ export class DashboardComponent implements OnInit {
     setFileUploaded(ev) {
         // ev = true; // test only
         this.fileUploaded = ev;
-        console.log(ev);
         this.showFullMatrixContentTab = ev;
         ev ? this.getFaultMatrix() : this.resetAll();
     }
@@ -217,18 +216,25 @@ export class DashboardComponent implements OnInit {
         }
         const errMsg1 = document.getElementById('errMsg1');
         errMsg1.className = (count > 1) ? 'msg error' : 'msg';
+        const calculateBtn = document.getElementById('calculateBtn');
+        calculateBtn.style.display = (count > 1) ? 'none' : 'block';
         return count > 1;
     }
 
     checkIfElementExceedsRange(elem: any): boolean {
-        if (elem <= 0 || elem > this.faultMatrix.numberOfTests) {
-            return true;
-        }
-            return false;
+        const errMsg2 = document.getElementById('errMsg2');
+        errMsg2.className = (elem && (elem <= 0 || elem > this.faultMatrix.numberOfTests)) ? 'msg error' : 'msg';
+        const calculateBtn = document.getElementById('calculateBtn');
+        calculateBtn.style.display = (elem <= 0 || elem > this.faultMatrix.numberOfTests) ? 'none' : 'block';
+        return (elem <= 0 || elem > this.faultMatrix.numberOfTests);
     }
 
     selectMetric(value) {
         this.selectedMetric = value;
     }
 
+    onChange(el) {
+        this.checkIfElementRepeatsInVector(el);
+        this.checkIfElementExceedsRange(el);
+    }
 }

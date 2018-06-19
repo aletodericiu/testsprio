@@ -67,14 +67,12 @@ export class FileUploadComponent implements OnInit, OnDestroy {
 
     postFile(fileToUpload: File): Observable<any> {
 
-        const heders = new Headers();
         const endpoint = 'http://localhost:8080/post';
+        // const endpoint = 'http://192.168.166.145:8080/post';
         const formData: FormData = new FormData();
         formData.append('filename', fileToUpload, fileToUpload.name);
         return this.httpClient
             .post(endpoint, formData, {headers: new HttpHeaders()});
-
-
     }
 
     ngOnDestroy() {

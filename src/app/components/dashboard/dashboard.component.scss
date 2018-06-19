@@ -45,8 +45,6 @@ canvas {
   min-height: 340px;
 
   > div {
-    //transition: all .9s;
-
     &:first-child {
       border-radius: 5px;
       width: auto;
@@ -86,11 +84,12 @@ canvas {
     outline: none;
     cursor: pointer;
     width: auto;
+    transition: all 0.3s ease;
 
     &:hover {
       color: white;
       font-weight: bolder;
-
+      transform: scale(1.2);
     }
 
     &.active {
@@ -148,4 +147,8 @@ canvas {
 
 .btn-outline-neutral:hover {
   transform: scale(1.1);
+}
+
+#calculateBtn {
+  margin: auto;
 }

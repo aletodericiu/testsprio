@@ -15,7 +15,7 @@ export class FileUploadService {
 
     postFile(fileToUpload: File): Observable<any> {
 
-
+        // const endpoint = 'http://192.168.166.145:8080/post';
         const endpoint = 'http://localhost:8080/post';
         const formData: FormData = new FormData();
         formData.append('filename', fileToUpload, fileToUpload.name);
