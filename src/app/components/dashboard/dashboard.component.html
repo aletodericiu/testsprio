@@ -5,6 +5,7 @@
 
             <div *ngIf="!selectedMetric">
                 <h3>Please select the metric: </h3>
+                <br>
 
                 <div class="[ form-group ]">
                     <input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default-apbc" autocomplete="off"
@@ -55,7 +56,7 @@
                 <app-file-upload (fileUploaded)="setFileUploaded($event)"></app-file-upload>
             </div>
 
-            <div class="btn btn-outline-neutral" *ngIf="selectedMetric" (click)="selectedMetric = null; fileUploaded = null">
+            <div class="btn btn-outline-neutral" *ngIf="selectedMetric" (click)="selectedMetric = null; fileUploaded = null" id="back-button">
                 Back
             </div>
 
@@ -65,7 +66,9 @@
                 <button [class.active]="showFullMatrixContentTab" (click)="getFaultMatrix()">Fault matrix details</button>
                 <button [class.active]="showBestIndividualContentTab" (click)="getBestIndividual()">Best solution</button>
                 <button [class.active]="showBestThreeIndividualsContentTab" (click)="getBestThreeIndividuals()">Top three solutions</button>
-                <button [class.active]="showAPFDForInputVectorContentTab" (click)="initAPFDForInputVectorTab()">Calculate APFD for your prioritization</button>
+                <button [class.active]="showAPFDForInputVectorContentTab" (click)="initAPFDForInputVectorTab()"  *ngIf="selectedMetric == 'apfd'">Calculate APFD for your prioritization</button>
+                <button [class.active]="showAPFDForInputVectorContentTab" (click)="initAPFDForInputVectorTab()"  *ngIf="selectedMetric == 'apsc'">Calculate APSC for your prioritization</button>
+                <button [class.active]="showAPFDForInputVectorContentTab" (click)="initAPFDForInputVectorTab()"  *ngIf="selectedMetric == 'apbc'">Calculate APBC for your prioritization</button>
             </div>
 
 
@@ -87,7 +90,10 @@
                 </div>
                 <div [hidden]="!showBestIndividualContentTab" class="content">
                     <div>
-                        <span class="bold"> APFD: </span> {{bestIndividual.fitness}}
+                        <span class="bold" *ngIf="selectedMetric == 'apfd'"> APFD: </span>
+                        <span class="bold" *ngIf="selectedMetric == 'apsc'"> APSC: </span>
+                        <span class="bold" *ngIf="selectedMetric == 'apbc'"> APBC: </span>
+                        {{bestIndividual.fitness}}
                         <br>
                         <br>
                         <span class="bold"> The solution vector: </span>
@@ -102,9 +108,12 @@
                 <div [hidden]="!showBestThreeIndividualsContentTab" class="content">
                     <div>
                         <div *ngFor="let data of bestThreeIndividuals; let i = index">
-                            <span> APFD: </span> {{data.fitness}}
+                            <span class="bold" *ngIf="selectedMetric == 'apfd'"> APFD: </span>
+                            <span class="bold" *ngIf="selectedMetric == 'apsc'"> APSC: </span>
+                            <span class="bold" *ngIf="selectedMetric == 'apbc'"> APBC: </span>
+                            {{data.fitness}}
                             <br>
-                            <span> Solution: </span>
+                            <span class="bold"> Solution: </span>
                             <span *ngFor="let ind of data.genes">
                             {{ind}}
                         </span>
@@ -123,7 +132,8 @@
                 </div>
                 <div [hidden]="!showAPFDForInputVectorContentTab" class="content">
                     <div>
-                        Give the arrangements of test cases:
+                        <h5>Give the arrangements of test cases:</h5>
+                        *The numbers should be in the range: [1,{{faultMatrix.numberOfTests}}]
                         <br>
                         <br>
                         <form #formRef="ngForm">

@@ -125,3 +125,13 @@ canvas {
 .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
   display: none;
 }
+
+#back-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+.btn-group{
+  width: 390px;
+}
