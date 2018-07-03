@@ -17,7 +17,7 @@
                 </button>
             </div>
 
-            <div [hidden]="!selectedMetric">
+            <div *ngIf="selectedMetric">
                 <h3 *ngIf="!fileUploaded">Please select and upload the data file!</h3>
                 <br />
                 <app-file-upload (fileUploaded)="setFileUploaded($event)"></app-file-upload>
